@@ -1,0 +1,32 @@
+# Build artifacts
+.build/
+DerivedData/
+state/
+ExampleInputs/
+__pycache__/ 
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+
+# macOS
+.DS_Store
+
+# Editor files
+*.swp
+*~
+
+# Software development
+.vscode/
+
+# simglucose
+simglucoseResults/
+MealScenarios/
+
+# Miscellaneous 
+otherOrefAlgs/

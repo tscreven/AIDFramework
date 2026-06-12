@@ -1,0 +1,11 @@
+{
+    "units": "mg/dL",
+    "user_preferred_units": "mg/dL",
+    "sensitivities": [
+        {
+            "offset": 0,
+            "sensitivity": 42,
+            "start": "00:00:00"
+        }
+    ]
+}
