@@ -1,6 +1,5 @@
 from .base import Controller
 from .base import Action
-import logging
 import subprocess
 import sys
 import json
@@ -10,9 +9,8 @@ OREF_SWIFT_BINARY = ".build/arm64-apple-macosx/release/oref-swift"
 
 class TrioOrefController(Controller):
 
-    def __init__(self, virtual_user, js_alg, print_logs):
+    def __init__(self, virtual_user, js_alg):
         self.js_alg = js_alg
-        self.print_logs = print_logs
 
         virtual_users_dir = Path(__file__).resolve().parents[3] / "VirtualPatients"
         user_path = virtual_users_dir / virtual_user
@@ -42,25 +40,6 @@ class TrioOrefController(Controller):
         active_rate, bolus_rate = self._insulin_outputs(determination, sample_time)
 
         return Action(basal=active_rate, bolus=bolus_rate)
-    
-
-    #
-    # Read logs from Oref algorithm and then format and print logs for each
-    # time step.
-    #     
-    def _process_logs(self, timestamp, result):
-        print("Time:", timestamp)
-        lines = result.stderr.split('\n')
-        line_prefix = "CHECK:"
-        for line in lines:
-            if line_prefix not in line:
-                continue
-            try:
-                var, value = line.split(line_prefix)[1].split(" = ")
-            except:
-                print("READ", line)
-                exit(1)
-            print(f"{var}: {value}")
         
 
     #
@@ -74,9 +53,6 @@ class TrioOrefController(Controller):
 
         input_data = json.dumps({"timestamp": timestamp, "glucose": glucose})
         result = subprocess.run(cmd, input=input_data, capture_output=True, text=True)
-
-        if self.print_logs and result.stderr:
-            self._process_logs(timestamp, result)
 
         return json.loads(result.stdout)
 

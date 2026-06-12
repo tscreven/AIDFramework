@@ -257,7 +257,6 @@ public final class JavaScriptCommandRunner {
         guard let result = context.objectForKeyedSubscript("__swiftDetermineBasalResultJSON")?.toString() else {
             throw JSErrors.missingJSResult
         }
-        flushJSLogs()
         return result
     }
 
@@ -598,20 +597,6 @@ var get_iob = function(iob_inputs, currentIOBOnly, treatments) {
         let data: Data = try JSONSerialization.data(withJSONObject: [value])
         let encoded: String = String(decoding: data, as: UTF8.self)
         return String(encoded.dropFirst().dropLast())
-    }
-
-    private func flushJSLogs() {
-        guard let logValues = context.objectForKeyedSubscript("__swiftLogs"),
-              !logValues.isUndefined,
-              let logs = logValues.toArray() as? [String],
-              !logs.isEmpty
-        else {
-            return
-        }
-
-        for line in logs {
-            FileHandle.standardError.write(Data((line + "\n").utf8))
-        }
     }
 
     /// Find libary folder.

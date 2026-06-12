@@ -78,12 +78,6 @@ var getLastGlucose = function (data) {
         long_avgdelta = long_deltas.reduce(function(a, b) { return a + b; }) / long_deltas.length;
     }
 
-    console.error("LOG: imprecise time delta =", buggy_time_delta.at(-1))
-    console.error("LOG: imprecise last delta =", Math.round( last_delta * 100 ) / 100)
-    console.error("LOG: imprecise current glucose =", Math.round( now.glucose * 100 ) / 100)
-    console.error("LOG: imprecise noise =", Math.round(now.noise))
-    console.error("LOG: imprecise short avg delta =", Math.round( short_avgdelta * 100 ) / 100)
-    console.error("LOG: imprecise long avg delta =", Math.round( long_avgdelta * 100 ) / 100)
 
     return {
         delta: Math.round( last_delta * 100 ) / 100

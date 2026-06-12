@@ -32,9 +32,6 @@ tempBasalFunctions.setTempBasal = function setTempBasal(rate, duration, profile,
     var upperBound = Math.round(currenttemp.rate * 1.2 * 1000000) / 1000000;
     var lowerBound = Math.round(currenttemp.rate * 0.8 * 1000000) / 1000000;
 
-    console.error("LOG: suggestedRate =", suggestedRate)
-    console.error("LOG: precise upperBound =", upperBound)
-    console.error("LOG: precise lowerBound =", lowerBound)
 
     //if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= currenttemp.rate * 1.2 && suggestedRate >= currenttemp.rate * 0.8 && duration > 0 ) {
     if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= upperBound && suggestedRate >= lowerBound && duration > 0 ) {

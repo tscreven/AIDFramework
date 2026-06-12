@@ -29,9 +29,6 @@ tempBasalFunctions.setTempBasal = function setTempBasal(rate, duration, profile,
 
     var suggestedRate = round_basal(rate, profile);
 
-    console.error("LOG: suggestedRate =", suggestedRate)
-    console.error("LOG: imprecise upperBound =", currenttemp.rate * 1.2)
-    console.error("LOG: imprecise lowerBound =", currenttemp.rate * 0.8)
     
     if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= currenttemp.rate * 1.2 && suggestedRate >= currenttemp.rate * 0.8 && duration > 0 ) {
         rT.reason += " "+currenttemp.duration+"m left and " + currenttemp.rate + " ~ req " + suggestedRate + "U/hr: no temp required";

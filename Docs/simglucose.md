@@ -51,7 +51,7 @@ python3 simglucose/gen_meal_scenario.py -d <days> -ps <p_snack> -bk <breakfast> 
 ### Run Simulator
 Run `simglucose` using Trio oref controller. 
 ```
-python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen <meal_scenario_path> -fn <results_file> --log
+python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen <meal_scenario_path> -fn <results_file>
 ```
 * `virtual_patient`: Name of virtual patient. Valid patient names are age group followed by three digits. Age groups = [child, adolescent, adult]. Valid digits = [001, 002, 003, 004, 005, 006, 007, 008, 009, 010]
     * eg. adolescent002 or adult010
@@ -59,11 +59,10 @@ python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen
     * `jsbug`: Original Javascript implementation.
     * `jsiobfix`: Javascript implementation with IOB bug fixes.
     * `jsiob_as_fix`: Javascript implementation with IOB and Autosens bug fixes.
-    * `js`: Javascript implementation of bug-free Swift oref algorithm. Only run this algorithm for logging purposes because it is equivalent to Swift implementation and it is slower.
+    * `js`: Javascript implementation of bug-free Swift oref algorithm.
 * `days`: Number of days simulation runs (must be whole number)
 * `meal_scenario_pat`h`: **Optional argument**. Filepath to precomputed .npy file containing meal scenario.
 * `results_file`: Filepath to .csv file where outputs will be written to.
-* `--log`: Optional flag to print logs of variables which can potentially cause precision errors.
 
 ## Trio Oref Algorithm Integration in `simglucose`
 A controller (`simglucose/controller/trio_ctrller.py`) initialzes a simulation state for the oref algorithm. The oref algorithm uses this simulation state to track the last 24 hours of self-managed time-series data to decide the amount of insulin to deliver at the current timestep.

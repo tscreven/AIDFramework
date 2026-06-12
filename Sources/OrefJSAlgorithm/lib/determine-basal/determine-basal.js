@@ -219,17 +219,14 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     if (tdd24h_14d_Ratio > 1) {
         tdd24h_14d_Ratio = Math.min(tdd24h_14d_Ratio, profile.autosens_max);
         tdd24h_14d_Ratio = round(tdd24h_14d_Ratio,2);
-        console.error("LOG: precise tdd24h_14d_Ratio =", tdd24h_14d_Ratio);
         basal_ratio_log = "Basal adjustment with a 24 hour  to total average (up to 14 days of data) TDD ratio (limited by Autosens max setting). Basal Ratio: " + tdd24h_14d_Ratio + ". Upper limit = Autosens max (" + profile.autosens_max + ")";
     }
     else if (tdd24h_14d_Ratio < 1) {
         tdd24h_14d_Ratio = Math.max(tdd24h_14d_Ratio, profile.autosens_min);
         tdd24h_14d_Ratio = round(tdd24h_14d_Ratio,2);
-        console.error("LOG: precise tdd24h_14d_Ratio =", tdd24h_14d_Ratio);
         basal_ratio_log = "Basal adjustment with a 24 hour to  to total average (up to 14 days of data) TDD ratio (limited by Autosens min setting). Basal Ratio: " + tdd24h_14d_Ratio + ". Lower limit = Autosens min (" + profile.autosens_min + ")";
     }
     else {
-        console.error("LOG: precise tdd24h_14d_Ratio =", tdd24h_14d_Ratio);
         basal_ratio_log = "Basal adjusted with a 24 hour to total average (up to 14 days of data) TDD ratio: " + tdd24h_14d_Ratio;
     }
 
@@ -400,7 +397,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
 
     var bgTime = new Date(glucose_status.date);
     var minAgo = round( (systemTime - bgTime) / 60 / 1000 ,1);
-    console.error("LOG: precise minAgo =", minAgo);
 
     var bg = glucose_status.glucose;
     var noise = glucose_status.noise;
@@ -530,7 +526,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         // limit sensitivityRatio to profile.autosens_max (1.2x by default)
         sensitivityRatio = Math.min(sensitivityRatio, profile.autosens_max);
         sensitivityRatio = round(sensitivityRatio,2);
-        console.error("LOG: precise sensitivityRatio 1 =", sensitivityRatio);
         process.stderr.write("Sensitivity ratio set to "+sensitivityRatio+" based on temp target of "+target_bg+"; ");
     }
     else if (typeof autosens_data !== 'undefined' && autosens_data) {
@@ -551,7 +546,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             //Use autosesns.max limit
             autosens_data.ratio = Math.min(autosens_data.ratio, profile.autosens_max);
             sensitivityRatio = round(autosens_data.ratio, 2);
-            console.error("LOG: precise sensitivityRatio 2 =", sensitivityRatio);
             console.error("Dynamic ratio increased from " + round(newRatio, 2) + " to " + round(autosens_data.ratio,2) + " due to a low temp target (" + target_bg + ").");
         }
     }
@@ -595,7 +589,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
                 process.stderr.write("target_bg from "+ convert_bg(new_target_bg, profile) + " to " + convert_bg(new_target_bg, profile) + "; ");
             }
             target_bg = new_target_bg;
-            console.error("LOG: precise new_target_bg =", target_bg);
         }
     }
 
@@ -625,16 +618,12 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         min_bg = adjustedMinBG;
         target_bg = adjustedTargetBG;
         max_bg = adjustedMaxBG;
-        console.error("LOG: precise adjustedMinBG =", adjustedMinBG);
-        console.error("LOG: precise adjustedTargetBG =", adjustedTargetBG);
-        console.error("LOG: precise adjustedMaxBG =", adjustedMaxBG);
     }
 
     // min_bg thresholds: 80->60, 90->65, 100->70, 110->75, 120->80
     threshold = min_bg - 0.5*(min_bg-40);
     // Set threshold to the user's setting, as long as it's between 60-120 and above the default calculated threshold
     threshold = Math.min(Math.max(profile.threshold_setting, threshold, 60), 120);
-    console.error("LOG: precise threshold =", threshold);
     console.error(`Threshold set to ${convert_bg(threshold, profile)}`);
 
 // If iob_data or its required properties are missing, return.
@@ -657,7 +646,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         isfreason += "Autosens ratio: " + round(sensitivityRatio, 2) + ", ISF: " + convert_bg(sensitivity,profile) + "\u2192" + convert_bg(sens,profile);
 
     }
-    console.error("LOG: precise sens =", sens);
     console.error("CR:" + carbRatio);
 
     if (typeof iob_data === 'undefined' ) {
@@ -689,7 +677,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     } else {
         lastTempAge = 0;
     }
-    console.error("LOG: precise lastTempAge =", lastTempAge);
     //console.error("currenttemp:",currenttemp,"lastTemp:",JSON.stringify(iob_data.lastTemp),"lastTempAge:",lastTempAge,"m");
     var tempModulus = (lastTempAge + currenttemp.duration) % 30;
     console.error("currenttemp:" + currenttemp.rate + " lastTempAge:" + lastTempAge + "m, tempModulus:" + tempModulus + "m");
@@ -716,7 +703,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     // BUG: This is a small imprecision fix that causes large differences in forecasts
     var bgiPreRound = round(( -iob_data.activity * sens * 5 ), 5);
     var bgi = round(bgiPreRound, 2);
-    console.error("LOG: precise bgi =", bgi);
     // project deviations for 30 minutes
     var deviation = round( 30 / 5 * ( minDelta - bgi ) );
     // don't overreact to a big negative delta: use minAvgDelta if deviation is negative
@@ -727,7 +713,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             deviation = round( (30 / 5) * ( glucose_status.long_avgdelta - bgi ) );
         }
     }
-    console.error("LOG: precise deviation =", deviation);
 
     // calculate the naive (bolus calculator math) eventual BG based on net IOB and sensitivity
     var naive_eventualBG = bg;
@@ -738,7 +723,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     }
     // and adjust it for the deviation above
     var eventualBG = naive_eventualBG + deviation;
-    console.error("LOG: precise eventualBG =", eventualBG);
 
     if (typeof eventualBG === 'undefined' || isNaN(eventualBG)) {
         rT.error ='Error: could not calculate eventualBG. Sensitivity: ' + sens + ' Deviation: ' + deviation;
@@ -772,7 +756,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         , 'minPredBG':  minPredBG
         , 'threshold': convert_bg(threshold, profile)
     };
-    console.error("LOG: precise CR =", round(carbRatio, 1));
 
 // Generate predicted future BGs based on IOB, COB, and current absorption rate
 
@@ -813,7 +796,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     // calculate current carb absorption rate, and how long to absorb all carbs
     // CI = current carb impact on BG in mg/dL/5m
     ci = round(minDelta - bgi, 1);
-    console.error("LOG: precise ci =", ci);
     var uci = round(minDelta - bgi, 1);
     // ISF (mg/dL/U) / CR (g/U) = CSF (mg/dL/g)
 
@@ -826,7 +808,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     var maxCarbAbsorptionRate = 30; // g/h; maximum rate to assume carbs will absorb if no CI observed
     // limitLog Carb Impact to maxCarbAbsorptionRate * csf in mg/dL per 5m
     var maxCI = round(maxCarbAbsorptionRate*csf*5/60,1);
-    console.error("LOG: precise maxCI =", maxCI);
     if (ci > maxCI) {
         console.error("Limiting carb impact from " + ci + " to " + maxCI + "mg/dL/5m (" + maxCarbAbsorptionRate + "g/h)");
         ci = maxCI;
@@ -851,7 +832,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         // if the lastCarbTime was 1h ago, increase remainingCATime by 1.5 hours
         remainingCATime = remainingCATimeMin + 1.5 * lastCarbAge/60;
         remainingCATime = round(remainingCATime, 1);
-        console.error("LOG: precise remainingCATime =", remainingCATime);
         //console.error(fractionCOBAbsorbed, remainingCATimeAdjustment, remainingCATime)
         console.error("Last carbs " + lastCarbAge + " minutes ago; remainingCATime:" + remainingCATime + "hours; " + round(fractionCOBAbsorbed*100, 1) + "% carbs absorbed");
     }
@@ -875,18 +855,14 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     var remainingCIpeak = remainingCarbs * csf * 5 / 60 / (remainingCATime/2);
     // BUG: we can get really small remaining CI peak from precision errors
     remainingCIpeak = Math.round(remainingCIpeak * 10000000) / 10000000;
-    console.error("LOG: precise remainingCIpeak =", remainingCIpeak);
     //console.error(profile.min_5m_carbimpact,ci,totalCI,totalCA,remainingCarbs,remainingCI,remainingCATime);
 
     // calculate peak deviation in last hour, and slope from that to current deviation
     var slopeFromMaxDeviation = round(meal_data.slopeFromMaxDeviation,2);
-    console.error("LOG: precise slopeFromMaxDeviation =", slopeFromMaxDeviation);
     // calculate lowest deviation in last hour, and slope from that to current deviation
     var slopeFromMinDeviation = round(meal_data.slopeFromMinDeviation,2);
-    console.error("LOG: precise slopeFromMinDeviation =", slopeFromMinDeviation);
     // assume deviations will drop back down at least at 1/3 the rate they ramped up
     var slopeFromDeviations = Math.min(slopeFromMaxDeviation,-slopeFromMinDeviation/3);
-    console.error("LOG: precise slopeFromDeviations =", slopeFromDeviations);
     //console.error(slopeFromMaxDeviation);
 
     //5m data points = g * (1U/10g) * (40mg/dL/1U) / (mg/dL/5m)
@@ -928,9 +904,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         iobArray.forEach(function(iobTick) {
             //console.error(iobTick);
             var predBGI = round(( -iobTick.activity * sens * 5 ), 2);
-            console.error("LOG: precise predBGI =", predBGI);
             var predZTBGI = round(( -iobTick.iobWithZeroTemp.activity * sens * 5 ), 2);
-            console.error("LOG: precise predZTBGI =", predZTBGI);
             var ZTpredBG = naive_eventualBG;
 
             // for IOBpredBGs, predicted deviation impact drops linearly from current deviation down to zero
@@ -942,10 +916,8 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
                 case dynISFenabled && !enable_sigmoid:
                     //IOBpredBG = IOBpredBGs[IOBpredBGs.length-1] + predBGI + predDev; // Adding dynamic ISF in predictions for UAM, ZT and IOB:
                     IOBpredBG = IOBpredBGs[IOBpredBGs.length-1] + (round(( -iobTick.activity * (1800 / ( tdd * adjustmentFactor * (Math.log((Math.max( IOBpredBGs[IOBpredBGs.length-1],39) / insulinFactor ) + 1 ) ) )) * 5 ),2)) + predDev;
-                    console.error("LOG: precise IOBpredBG =", IOBpredBG);
                     //var ZTpredBG = ZTpredBGs[ZTpredBGs.length-1] + predZTBGI; // Adding dynamic ISF in predictions for UAM, ZT and IOB:
                     ZTpredBG = ZTpredBGs[ZTpredBGs.length-1] + (round(( -iobTick.iobWithZeroTemp.activity * (1800 / ( tdd * adjustmentFactor * (Math.log(( Math.max(ZTpredBGs[ZTpredBGs.length-1],39) / insulinFactor ) + 1 ) ) )) * 5 ), 2));
-                    console.error("LOG: precise ZTpredBG =", ZTpredBG);
                     console.error("Dynamic ISF (Logarithmic Formula) )adjusted predictions for IOB and ZT: IOBpredBG: " + round(IOBpredBG,2) + " , ZTpredBG: " + round(ZTpredBG,2));
                     break;
                 default:
@@ -964,9 +936,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             var remainingCI = Math.max(0, intervals / (remainingCATime/2*12) * remainingCIpeak );
             remainingCItotal += predCI+remainingCI;
             remainingCIs.push(round(remainingCI,0));
-            console.error("LOG: precise remainingCI =", round(remainingCI,0));
             predCIs.push(round(predCI,0));
-            console.error("LOG: precise remainingpredCI =", round(predCI,0));
             //process.stderr.write(round(predCI,1)+"+"+round(remainingCI,1)+" ");
             COBpredBG = COBpredBGs[COBpredBGs.length-1] + predBGI + Math.min(0,predDev) + predCI + remainingCI;
             // for UAMpredBGs, predicted carb impact drops at slopeFromDeviations
@@ -981,7 +951,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             if(predUCI>0) {
                 //console.error(UAMpredBGs.length,slopeFromDeviations, predUCI);
                 UAMduration=round((UAMpredBGs.length+1)*5/60,1);
-                console.error("LOG: precise UAMduration =", UAMduration);
             }
 
             // Adding dynamic ISF in predictions for UAM. Modification from Tim Street's AAPS but with default as off:
@@ -1003,19 +972,15 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             // calculate minGuardBGs without a wait from COB, UAM, IOB predBGs
             if ( COBpredBG < minCOBGuardBG ) {
                 minCOBGuardBG = round(COBpredBG);
-                console.error("LOG: precise minCOBGuardBG =", minCOBGuardBG);
             }
             if ( UAMpredBG < minUAMGuardBG ) {
                 minUAMGuardBG = round(UAMpredBG);
-                console.error("LOG: precise minUAMGuardBG =", minUAMGuardBG);
             }
             if ( IOBpredBG < minIOBGuardBG ) {
                 minIOBGuardBG = round(IOBpredBG);
-                console.error("LOG: precise minIOBGuardBG =", minIOBGuardBG);
             }
             if ( ZTpredBG < minZTGuardBG ) {
                 minZTGuardBG = round(ZTpredBG);
-                console.error("LOG: precise minZTGuardBG =", minZTGuardBG);
             }
 
             // set minPredBGs starting when currently-dosed insulin activity will peak
@@ -1029,18 +994,15 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             // wait 90m before setting minIOBPredBG
             if ( IOBpredBGs.length > insulinPeak5m && (IOBpredBG < minIOBPredBG) ) {
                 minIOBPredBG = round(IOBpredBG);
-                console.error("LOG: precise minIOBPredBG =", minIOBPredBG);
             }
             if ( IOBpredBG > maxIOBPredBG ) { maxIOBPredBG = IOBpredBG; }
             // wait 85-105m before setting COB and 60m for UAM minPredBGs
             if ( (cid || remainingCIpeak > 0) && COBpredBGs.length > insulinPeak5m && (COBpredBG < minCOBPredBG) ) {
                 minCOBPredBG = round(COBpredBG);
-                console.error("LOG: precise minCOBPredBG =", minCOBPredBG);
             }
             if ( (cid || remainingCIpeak > 0) && COBpredBG > maxIOBPredBG ) { maxCOBPredBG = COBpredBG; }
             if ( enableUAM && UAMpredBGs.length > 12 && (UAMpredBG < minUAMPredBG) ) {
                 minUAMPredBG = round(UAMpredBG);
-                console.error("LOG: precise minUAMPredBG =", minUAMPredBG);
             }
             if ( enableUAM && UAMpredBG > maxIOBPredBG ) { maxUAMPredBG = UAMpredBG; }
         });
@@ -1064,7 +1026,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     }
     rT.predBGs.IOB = IOBpredBGs;
     lastIOBpredBG=round(IOBpredBGs[IOBpredBGs.length-1]);
-    console.error("LOG: precise lastIOBpredBG =", lastIOBpredBG);
     ZTpredBGs.forEach(function(p, i, theArray) {
         theArray[i] = round(Math.min(401,Math.max(39,p)));
     });
@@ -1075,7 +1036,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     }
     rT.predBGs.ZT = ZTpredBGs;
     lastZTpredBG=round(ZTpredBGs[ZTpredBGs.length-1]);
-    console.error("LOG: precise lastZTpredBG =", lastZTpredBG);
     if (meal_data.mealCOB > 0 && ( ci > 0 || remainingCIpeak > 0 )) {
         COBpredBGs.forEach(function(p, i, theArray) {
             theArray[i] = round(Math.min(1500,Math.max(39,p)));
@@ -1086,7 +1046,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         }
         rT.predBGs.COB = COBpredBGs;
         lastCOBpredBG=round(COBpredBGs[COBpredBGs.length-1]);
-        console.error("LOG: precise lastCOBpredBG =", lastCOBpredBG);
         eventualBG = Math.max(eventualBG, round(COBpredBGs[COBpredBGs.length-1]));
         console.error("COBpredBG: " + round(COBpredBGs[COBpredBGs.length-1]) );
     }
@@ -1101,7 +1060,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             }
             rT.predBGs.UAM = UAMpredBGs;
             lastUAMpredBG=round(UAMpredBGs[UAMpredBGs.length-1]);
-            console.error("LOG: precise lastUAMpredBG =", lastUAMpredBG);
             if (UAMpredBGs[UAMpredBGs.length-1]) {
                 eventualBG = Math.max(eventualBG, round(UAMpredBGs[UAMpredBGs.length-1]) );
             }
@@ -1117,7 +1075,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     minCOBPredBG = Math.max(39,minCOBPredBG);
     minUAMPredBG = Math.max(39,minUAMPredBG);
     minPredBG = round(minIOBPredBG);
-    console.error("LOG: precise minPredBG =", minPredBG);
 
     var fractionCarbsLeft = meal_data.mealCOB/meal_data.carbs;
     // if we have COB and UAM is enabled, average both
@@ -1133,7 +1090,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     } else {
         avgPredBG = round( IOBpredBG );
     }
-    console.error("LOG: precise avgPredBG =", avgPredBG);
     // if avgPredBG is below minZTGuardBG, bring it up to that level
     if ( minZTGuardBG > avgPredBG ) {
         avgPredBG = minZTGuardBG;
@@ -1152,11 +1108,9 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         minGuardBG = minIOBGuardBG;
     }
     minGuardBG = round(minGuardBG);
-    console.error("LOG: precise minGuardBG =", minGuardBG);
     //console.error(minCOBGuardBG, minUAMGuardBG, minIOBGuardBG, minGuardBG);
 
     var minZTUAMPredBG = minUAMPredBG;
-    console.error("LOG: precise minZTUAMPredBG =", minZTUAMPredBG);
     // if minZTGuardBG is below threshold, bring down any super-high minUAMPredBG by averaging
     // this helps prevent UAM from giving too much insulin in case absorption falls off suddenly
     if ( minZTGuardBG < threshold ) {
@@ -1197,7 +1151,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     } else if ( enableUAM ) {
         minPredBG = round(Math.max(minIOBPredBG,minZTUAMPredBG));
     }
-    console.error("LOG: precise minPredBG 2 =", minPredBG);
 
     // make sure minPredBG isn't higher than avgPredBG
     minPredBG = Math.min( minPredBG, avgPredBG );
@@ -1224,10 +1177,8 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     rT.deviation=convert_bg(deviation, profile);
     rT.ISF=convert_bg(sens, profile);
     rT.CR=round(carbRatio, 1);
-    console.error("LOG: precise carbRatio =", rT.CR);
     rT.target_bg=convert_bg(target_bg, profile);
     rT.current_target=round(target_bg, 0);
-    console.error("LOG: precise current_target =", rT.current_target);
     rT.reason = isfreason + ", COB: " + rT.COB + ", Dev: " + rT.deviation + ", BGI: " + rT.BGI + ", CR: " + rT.CR + ", Target: " + targetLog + ", minPredBG " + convert_bg(minPredBG, profile) + ", minGuardBG " + convert_bg(minGuardBG, profile) + ", IOBpredBG " + convert_bg(lastIOBpredBG, profile);
     if (lastCOBpredBG > 0) {
         rT.reason += ", COBpredBG " + convert_bg(lastCOBpredBG, profile);
@@ -1285,7 +1236,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         rT.manualBolusErrorString = 1;
         rT.minGuardBG = minGuardBG;
         rT.insulinForManualBolus = round((rT.eventualBG - rT.target_bg) / sens, 2);
-        console.error("LOG: precise insulinForManualBolus =", rT.insulinForManualBolus);
 
         //rT.reason += "minGuardBG "+minGuardBG+"<"+threshold+": SMB disabled; ";
         enableSMB = false;
@@ -1320,7 +1270,6 @@ var maxDelta_bg_threshold;
     var carbsReq = (bgUndershoot - zeroTempEffect) / csf - COBforCarbsReq;
     zeroTempEffect = round(zeroTempEffect);
     carbsReq = round(carbsReq);
-    console.error("LOG: precise carbsReq =", carbsReq);
     console.error("naive_eventualBG:",naive_eventualBG,"bgUndershoot:",bgUndershoot,"zeroTempDuration:",zeroTempDuration,"zeroTempEffect:",zeroTempEffect,"carbsReq:",carbsReq);
     if ( meal_data.reason == "Could not parse clock data" ) {
         console.error("carbsReq unknown: Could not parse clock data");
@@ -1347,14 +1296,12 @@ var maxDelta_bg_threshold;
             rT.minGuardBG = minGuardBG;
         }
         rT.insulinForManualBolus =  round((eventualBG - target_bg) / sens, 2);
-        console.error("LOG: precise insulinForManualBolus 2 =", rT.insulinForManualBolus);
 
         worstCaseInsulinReq = bgUndershoot / sens;
         durationReq = round(60*worstCaseInsulinReq / profile.current_basal*overrideFactor);
         durationReq = round(durationReq/30)*30;
         // always set a 30-120m zero temp (oref0-pump-loop will let any longer SMB zero temp run)
         durationReq = Math.min(120,Math.max(30,durationReq));
-        console.error("LOG: precise durationReq =", durationReq);
         return tempBasalFunctions.setTempBasal(0, durationReq, profile, rT, currenttemp);
     }
 
@@ -1408,7 +1355,6 @@ var maxDelta_bg_threshold;
             //console.error("Increasing insulinReq from " + insulinReq + " to " + newinsulinReq);
             insulinReq = newinsulinReq;
         }
-        console.error("LOG: precise insulinReq =", insulinReq);
         // rate required to deliver insulinReq less insulin over 30m:
         rate = basal + (2 * insulinReq);
         rate = round_basal(rate, profile);
@@ -1417,7 +1363,6 @@ var maxDelta_bg_threshold;
         insulinScheduled = currenttemp.duration * (currenttemp.rate - basal) / 60;
         // BUG: Adding precision to insulinScheduled
         insulinScheduled = Math.round(insulinScheduled * 1000000) / 1000000;
-        console.error("LOG: precise insulinScheduled =", insulinScheduled);
         // if current temp would deliver a lot (30% of basal) less than the required insulin,
         // by both normal and naive calculations, then raise the rate
         var minInsulinReq = Math.min(insulinReq,naiveInsulinReq);
@@ -1425,13 +1370,11 @@ var maxDelta_bg_threshold;
         console.error("naiveInsulinReq:" + naiveInsulinReq);
 
         // BUG: Add rounding for precision
-        console.error("LOG: precise insulinScheduled comparison =", Math.round((minInsulinReq - basal*0.3) * 1000000) / 1000000);
         if (insulinScheduled < Math.round((minInsulinReq - basal*0.3) * 1000000) / 1000000) {
             rT.reason += ", " + currenttemp.duration + "m@" + (currenttemp.rate).toFixed(2) + " is a lot less than needed. ";
             return tempBasalFunctions.setTempBasal(rate, 30, profile, rT, currenttemp);
         }
         // BUG: Adding precision to the rate calc
-        console.error("LOG: precise temp basal rate comparison =", Math.round(currenttemp.rate * 0.8 * 1000000)/1000000);
         if (typeof currenttemp.rate !== 'undefined' && (currenttemp.duration > 5 && rate >= Math.round(currenttemp.rate * 0.8 * 1000000)/1000000)) {
             rT.reason += ", temp " + currenttemp.rate + " ~< req " + rate + "U/hr. ";
             return rT;
@@ -1450,7 +1393,6 @@ var maxDelta_bg_threshold;
                     durationReq = round(durationReq/30)*30;
                     durationReq = Math.min(120,Math.max(0,durationReq));
                 }
-                console.error("LOG: precise durationReq 2 =", durationReq);
                 //console.error(durationReq);
                 if (durationReq > 0) {
                     rT.reason += ", setting " + durationReq + "m zero temp. ";
@@ -1531,7 +1473,6 @@ var maxDelta_bg_threshold;
         rT.reason += "Eventual BG " + convert_bg(eventualBG, profile) + " >= " +  convert_bg(max_bg, profile) + ", ";
         if (eventualBG > max_bg) {
         rT.insulinForManualBolus = round((eventualBG - target_bg) / sens, 2);
-        console.error("LOG: precise insulinForManualBolus 2 =", rT.insulinForManualBolus);
         }
     }
     if (iob_data.iob > max_iob) {
@@ -1567,12 +1508,10 @@ var maxDelta_bg_threshold;
         rate = basal + (2 * insulinReq);
         rate = round_basal(rate, profile);
         insulinReq = round(insulinReq,3);
-        console.error("LOG: precise insulinReq 2 =", insulinReq);
         rT.insulinReq = insulinReq;
         //console.error(iob_data.lastBolusTime);
         // minutes since last bolus
         var lastBolusAge = round(( new Date(systemTime).getTime() - iob_data.lastBolusTime ) / 60000,1);
-        console.error("LOG: precise lastBolusAge =", lastBolusAge);
 
         //console.error(lastBolusAge);
         //console.error(profile.temptargetSet, target_bg, rT.COB);
@@ -1600,7 +1539,6 @@ var maxDelta_bg_threshold;
             }
 
             var mealInsulinReq = round( meal_data.mealCOB / carbRatio ,3);
-            console.error("LOG: precise mealInsulinReq =", mealInsulinReq);
             var maxBolus = 0;
             if (typeof smbMinutesSetting === 'undefined' ) {
                 maxBolus = round(profile.current_basal *overrideFactor * 30 / 60 ,1);
@@ -1628,7 +1566,6 @@ var maxDelta_bg_threshold;
                   console.error("SMB limited by maxSMBBasalMinutes: " + smbMinutesSetting + "m ]: " + maxBolus + "U ( insulinReq: " + insulinReq + "U )");
                 } else { console.error("SMB is not limited by maxSMBBasalMinutes. ( insulinReq: " + insulinReq + "U )"); }
             }
-            console.error("LOG: precise maxBolus =", maxBolus);
             // bolus 1/2 the insulinReq, up to maxBolus, rounding down to nearest bolus increment
             var bolusIncrement = profile.bolus_increment;
             //if (profile.bolus_increment) { bolusIncrement=profile.bolus_increment };
@@ -1646,7 +1583,6 @@ var maxDelta_bg_threshold;
             var smbTarget = target_bg;
             worstCaseInsulinReq = (smbTarget - (naive_eventualBG + minIOBPredBG)/2 ) / sens;
             durationReq = round(60*worstCaseInsulinReq / profile.current_basal * overrideFactor);
-            console.error("LOG: precise durationReq 3 =", durationReq);
 
             // if insulinReq > 0 but not enough for a microBolus, don't set an SMB zero temp
             if (insulinReq > 0 && microBolus < bolusIncrement) {
@@ -1659,13 +1595,11 @@ var maxDelta_bg_threshold;
             // don't set an SMB zero temp longer than 60 minutes
             } else if (durationReq >= 30) {
                 durationReq = round(durationReq/30)*30;
-                console.error("LOG: precise durationReq 4 =", durationReq);
                 durationReq = Math.min(60,Math.max(0,durationReq));
             } else {
                 // if SMB durationReq is less than 30m, set a nonzero low temp
                 smbLowTempReq = round( basal * durationReq/30 ,2);
                 console.error("CHECK: unrounded smbLowTempReq =", basal * durationReq/30)
-                console.error("LOG: precise smbLowTempReq =", smbLowTempReq);
                 durationReq = 30;
             }
             rT.reason += " insulinReq " + insulinReq;
@@ -1684,9 +1618,7 @@ var maxDelta_bg_threshold;
                 SMBInterval = Math.min(10,Math.max(1,profile.SMBInterval));
             }
             var nextBolusMins = round(SMBInterval-lastBolusAge,0);
-            console.error("LOG: precise nextBolusMins =", nextBolusMins);
             var nextBolusSeconds = round((SMBInterval - lastBolusAge) * 60, 0) % 60;
-            console.error("LOG: precise nextBolusSeconds =", nextBolusSeconds);
             //console.error(naive_eventualBG, insulinReq, worstCaseInsulinReq, durationReq);
             console.error("naive_eventualBG " + naive_eventualBG + "," + durationReq + "m " + smbLowTempReq + "U/h temp needed; last bolus " + lastBolusAge +"m ago; maxBolus: " + maxBolus);
 
@@ -1713,7 +1645,6 @@ var maxDelta_bg_threshold;
         var maxSafeBasal = tempBasalFunctions.getMaxSafeBasal(profile);
         // BUG: Add precision to this calculation
         maxSafeBasal = Math.round(maxSafeBasal * 1000000) / 1000000;
-        console.error("LOG: precise maxSafeBasal =", maxSafeBasal);
 
         if (rate > maxSafeBasal) {
             rT.reason += "adj. req. rate: " + rate + " to maxSafeBasal: " + round(maxSafeBasal,2) + ", ";
@@ -1723,7 +1654,6 @@ var maxDelta_bg_threshold;
         insulinScheduled = currenttemp.duration * (currenttemp.rate - basal) / 60;
         // BUG: imprecision impacts control flow
         insulinScheduled = Math.round(insulinScheduled * 1000000) / 1000000;
-        console.error("LOG: precise insulinScheduled =", insulinScheduled);
         if (insulinScheduled >= insulinReq * 2) { // if current temp would deliver >2x more than the required insulin, lower the rate
             rT.reason += currenttemp.duration + "m@" + (currenttemp.rate).toFixed(2) + " > 2 * insulinReq. Setting temp basal of " + rate + "U/hr. ";
             return tempBasalFunctions.setTempBasal(rate, 30, profile, rT, currenttemp);

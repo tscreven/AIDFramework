@@ -21,13 +21,12 @@ def parse_args():
     parser.add_argument("-d", type=int, default=14, help="Number of days to simulate.")
     parser.add_argument('-scen', help="Filepath of file containing custom meal scenario.")
     parser.add_argument("-fn", help="Filepath of file to write results to.")
-    parser.add_argument("--log", action="store_true", help="Print log statements in algorithm if applicable")
     args = parser.parse_args()
 
     return args
 
 
-def main(user, run_js, days, scen, results_file, is_log):
+def main(user, run_js, days, scen, results_file):
 
     if run_js:
         run_js = "--" + run_js # formatting for CLI command flag
@@ -57,10 +56,10 @@ def main(user, run_js, days, scen, results_file, is_log):
     sensor = CGMSensor.withName('GuardianRT', seed=seed)
     pump = InsulinPump.withName('Insulet')
     env = T1DSimEnv(patient, sensor, pump, scenario)
-    controller = TrioOrefController(user, run_js, is_log)
+    controller = TrioOrefController(user, run_js)
     s = SimObj(env, controller, day_length, animate=False, results_fn=results_file)
     sim(s)
 
 if __name__ == "__main__":
     args = parse_args()
-    main(args.u, args.a, args.d, args.scen, args.fn, args.log)
+    main(args.u, args.a, args.d, args.scen, args.fn)

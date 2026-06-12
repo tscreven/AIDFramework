@@ -87,12 +87,6 @@ var getLastGlucose = function (data) {
         long_avgdelta = long_deltas.reduce(function(a, b) { return a + b; }) / long_deltas.length;
     }
 
-    console.error("LOG: precise time delta =", fixed_time_delta.at(-1))
-    console.error("LOG: precise last delta =", getGlucoseRound( last_delta, 2))
-    console.error("LOG: precise current glucose =", getGlucoseRound( now.glucose, 2))
-    console.error("LOG: precise noise =", getGlucoseRound( now.noise, 2))
-    console.error("LOG: precise short avg delta =", getGlucoseRound( short_avgdelta, 2))
-    console.error("LOG: precise long avg delta =", getGlucoseRound( long_avgdelta, 2))
 
     return {
         delta: getGlucoseRound( last_delta, 2)
