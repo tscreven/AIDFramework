@@ -1,9 +1,9 @@
-STATE_SNAPSHOT="autosensBugInvoke/state_autosens_error"
+STATE_SNAPSHOT="autosensBugInvoke/state_3ed02451"
 STATE_DIR="state/user1_20260403_111711"
-RESUME_AT="1763639955.907"
+RESUME_AT="$(cat "$STATE_SNAPSHOT/resumeTimestamp.txt")"
 LOG="temp.txt"
 
-csv="iobBugInvoke/sample_added_glucose_trace/14CFC51D-9B72-4B05-93BC-3544FCA8D58B_2025-11-02T10:15:00Z.csv"
+csv="iobBugInvoke/sample_added_glucose_trace/0A9CA9B2-CD18-4AF4-8384-866278470D72_2025-07-01T12:35:00Z.csv"
 basename="${csv##*/}"
 stem="${basename%.csv}"
 
@@ -18,7 +18,10 @@ python3 SimpleSim/simplesim.py \
     --jsbug \
     -replayState "$STATE_DIR" \
     -resumeAt "$RESUME_AT" \
-    > "buggy_output.csv" # may want to change the output path
+    > "buggy_output.csv"
+
+echo "Autosens ratios seen (buggy, chronological):"
+grep "^autosens:" "$LOG" | sed 's/.*ratio=\([^ ]*\).*/\1/' | uniq
 
 echo ""
 echo "=== Fixed: $basename ==="
@@ -29,6 +32,9 @@ python3 SimpleSim/simplesim.py \
     -a "$csv" \
     -replayState "$STATE_DIR" \
     -resumeAt "$RESUME_AT" \
-    > "fixed_output.csv" # may want to change the output path
+    > "fixed_output.csv"
+
+echo "Autosens ratios seen (fixed, chronological):"
+grep "^autosens:" "$LOG" | sed 's/.*ratio=\([^ ]*\).*/\1/' | uniq
 
 echo ""
