@@ -30,3 +30,7 @@ MealScenarios/
 
 # Miscellaneous 
 otherOrefAlgs/
+
+# datafiles
+iobBugInvoke
+autosensBugInvoke
