@@ -1,0 +1,5 @@
+{
+  "maxBolus": 10,
+  "insulin_action_curve": 10,
+  "maxBasal": 5
+}
