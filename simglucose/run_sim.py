@@ -53,7 +53,7 @@ def main(user, run_js, days, scen, results_file):
     day_length = timedelta(days=num_days)
     
     scenario = CustomScenario(start_time=start_time, scenario=meal_scen)
-    sensor = CGMSensor.withName('GuardianRT', seed=seed)
+    sensor = CGMSensor.withName('GuardianRT', seed=seed) # GuardianRT produces reading once every 5 minutes
     pump = InsulinPump.withName('Insulet')
     env = T1DSimEnv(patient, sensor, pump, scenario)
     controller = TrioOrefController(user, run_js)
