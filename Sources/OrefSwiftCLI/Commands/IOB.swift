@@ -88,7 +88,7 @@ struct IOB: ParsableCommand {
                 throw JSErrors.invalidUTF8Input
             }
 
-            let source: String = try loadSourceAlgorithm(jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
             let jsResultJSONString = try JavaScriptCommandRunner(lib: source).runIOB(inputJSON: inputJSONString)
             let jsData = Data(jsResultJSONString.utf8)
 

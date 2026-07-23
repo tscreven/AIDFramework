@@ -192,6 +192,12 @@ struct SimulationStorage {
                     isSMB: true
                 )
                 return [bolusEvent]
+
+            case .pumpResume:
+                return [PumpHistoryEvent(id: record.id, type: .pumpResume, timestamp: record.timestamp)]
+
+            case .pumpSuspend:
+                return [PumpHistoryEvent(id: record.id, type: .pumpSuspend, timestamp: record.timestamp)]
             }
         }
     }

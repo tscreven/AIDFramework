@@ -80,6 +80,7 @@ struct Calculate: ParsableCommand {
     @Flag(name: .long, help: "Run IOB fixed buggy JavaScript autosens implementation instead of Swift") var jsiobfix: Bool = false
     @Flag(name: .long, help: "Run IOB and Autosens fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_fix: Bool = false
     @Flag(name: .long, help: "Run IOB, Autosens, and determine basal fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_db_fix: Bool = false
+    @Flag(name: .long, help: "Encode autosens JS input dates as Unix seconds (triggers dateString bucket-collapse bug in autosens.js). Default is ISO8601.") var autosensSeconds: Bool = false
 
     func run() throws {
         let totalStart = DispatchTime.now()
@@ -92,7 +93,7 @@ struct Calculate: ParsableCommand {
 
         let runningJS: Bool = js || jsbug || jsiobfix || jsiob_as_fix || jsiob_as_db_fix
         if runningJS {
-            let source: String = try loadSourceAlgorithm(jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
             jsRunner = try JavaScriptCommandRunner(lib: source)
         }
 
@@ -101,8 +102,32 @@ struct Calculate: ParsableCommand {
             timings.append((label, elapsed))
         }
 
+        let logPath = "temp.txt"
+        let logURL = URL(fileURLWithPath: logPath)
+        func appendLog(_ line: String) {
+            let data = Data((line + "\n").utf8)
+            if let handle = try? FileHandle(forWritingTo: logURL) {
+                handle.seekToEndOfFile()
+                handle.write(data)
+                handle.closeFile()
+            } else {
+                try? (line + "\n").write(to: logURL, atomically: true, encoding: .utf8)
+            }
+        }
+
         func jsonString<T: Encodable>(for value: T) throws -> String {
             let data = try JSONCoding.encoder.encode(value)
+            return String(decoding: data, as: UTF8.self)
+        }
+
+        // Autosens JS input: encode dates as Unix seconds (matching Trio app format).
+        // The bug in autosens.js is triggered by `dateString` being a number in seconds —
+        // `new Date(1763632148)` treats it as ms → Jan 1970 → corrupts bucketed_data via reference mutation.
+        func autosensJSONString<T: Encodable>(for value: T) throws -> String {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+            encoder.dateEncodingStrategy = .secondsSince1970
+            let data = try encoder.encode(value)
             return String(decoding: data, as: UTF8.self)
         }
 
@@ -215,18 +240,25 @@ struct Calculate: ParsableCommand {
         // 6. Autosens check — recalculate if stale (>30 min) or missing, and enough data
         stepStart = DispatchTime.now()
         var autosens = try storage.loadAutosens()
+        let storedAutosensRatio = autosens.ratio
+        let storedAutosensTimestamp = autosens.timestamp
         let autosensAge: TimeInterval
         if replay, let autosensTimestamp = autosens.timestamp, autosensTimestamp > now {
             autosens = Autosens(ratio: 1)
             autosensAge = .infinity
+            appendLog("autosens-dbg: replay+future-ts override → ratio forced to 1 clock=\(now)")
         } else if let autosensTimestamp = autosens.timestamp {
             autosensAge = now.timeIntervalSince(autosensTimestamp)
         } else {
             autosensAge = .infinity
         }
 
+        let autosensAgeMin = autosensAge.isInfinite ? Double.infinity : autosensAge / 60.0
+        let willRecalc = autosensAge > 30 * 60 && glucoseHistory.count >= 72
+
         if autosensAge > 30 * 60, glucoseHistory.count >= 72 {
             if let jsRunner {
+                appendLog("autosens-dbg: RECALC via JS autosensSeconds=\(autosensSeconds) clock=\(now)")
                 let autosensInput = JSAutosensInput(
                     glucose: glucoseHistory,
                     history: pumpHistory,
@@ -236,14 +268,21 @@ struct Calculate: ParsableCommand {
                     tempTargets: inputs.tempTargets,
                     clock: now
                 )
-                jsAutosensOutput = try jsRunner.runAutosens(inputJSON: try jsonString(for: autosensInput))
+                let autosensInputJSON = autosensSeconds
+                    ? (try autosensJSONString(for: autosensInput))
+                    : (try jsonString(for: autosensInput))
+                // jsbug: let JS find_insulin run natively (reproduces 8h-window IOB bug → ratio=1)
+                // all other JS modes: inject Swift IOB so autosens deviations are correct
+                jsAutosensOutput = try jsRunner.runAutosens(inputJSON: autosensInputJSON, injectSwiftIOB: !jsbug)
                 guard let jsAutosensOutput,
                       let jsAutosensData = jsAutosensOutput.data(using: .utf8)
                 else {
                     throw JSErrors.missingJSResult
                 }
                 autosens = try decodeJSAutosens(from: jsAutosensData)
+                appendLog("autosens-dbg: RECALC via JS result ratio=\(autosens.ratio) newisf=\(autosens.newisf ?? 0) clock=\(now)")
             } else {
+                appendLog("autosens-dbg: RECALC via Swift clock=\(now)")
                 let ratio8h = try AutosensGenerator.generate(
                     glucose: glucoseHistory,
                     pumpHistory: pumpHistory,
@@ -252,7 +291,8 @@ struct Calculate: ParsableCommand {
                     carbs: carbHistory,
                     tempTargets: inputs.tempTargets,
                     maxDeviations: 96,
-                    clock: now
+                    clock: now,
+                    includeDeviationsForTesting: true
                 )
 
                 let ratio24h = try AutosensGenerator.generate(
@@ -263,10 +303,18 @@ struct Calculate: ParsableCommand {
                     carbs: carbHistory,
                     tempTargets: inputs.tempTargets,
                     maxDeviations: 288,
-                    clock: now
+                    clock: now,
+                    includeDeviationsForTesting: true
                 )
 
+                appendLog("autosens-dbg: RECALC via Swift result 8h ratio=\(ratio8h.ratio) 24h ratio=\(ratio24h.ratio) clock=\(now)")
                 autosens = ratio8h.ratio < ratio24h.ratio ? ratio8h : ratio24h
+                if let debugInfo = autosens.debugInfo {
+                    let fmt = ISO8601DateFormatter()
+                    for d in debugInfo {
+                        appendLog("[autosens-deviation-swift] t=\(fmt.string(from: d.iobClock)) bgi=\(d.bgi) delta=\(d.deltaGlucose) deviation=\(d.deviation) mealCOB=\(d.mealCOB ?? 0) state=\(d.stateType)")
+                    }
+                }
             }
             autosens.timestamp = now
             if !replay {
@@ -274,6 +322,10 @@ struct Calculate: ParsableCommand {
             }
         }
         mark("autosens", since: stepStart)
+
+        // Per-step autosens log
+        let autosensAgeMinForLog = autosensAge.isInfinite ? "inf" : String(format: "%.1f", autosensAge / 60.0)
+        appendLog("autosens: ratio=\(autosens.ratio) newisf=\(autosens.newisf ?? 0) age=\(autosensAgeMinForLog)min glucoseCount=\(glucoseHistory.count) clock=\(now)")
 
         // 7. Run IOB
         stepStart = DispatchTime.now()
@@ -419,6 +471,21 @@ struct Calculate: ParsableCommand {
         } catch let determinationError as DeterminationError {
             let errorResponse = DeterminationErrorResponse(error: determinationError.localizedDescription)
             outputData = try JSONCoding.encoder.encode(errorResponse)
+        }
+
+        // Per-step determine-basal log
+        if let det = determinationForStorage {
+            let sensRatio = det.sensitivityRatio ?? autosens.ratio
+            let mode = jsbug ? "jsbug" : (js ? "js" : (jsiobfix ? "jsiobfix" : (jsiob_as_fix ? "jsiob_as_fix" : (jsiob_as_db_fix ? "jsiob_as_db_fix" : "swift"))))
+            appendLog("determine-basal: mode=\(mode) sensitivityRatio=\(sensRatio) autosens.ratio=\(autosens.ratio) dynamicISF=\(preferences.useNewFormula) sufficientTDD=\(sufficientTDD) clock=\(now)")
+            let iobCurrent = iobData.first?.iob ?? 0
+            let rateStr = det.rate.map { "\($0)" } ?? "nil"
+            let unitsStr = det.units.map { "\($0)" } ?? "nil"
+            let isfStr = det.isf.map { "\($0)" } ?? "nil"
+            let eventualBGStr = det.eventualBG.map { "\($0)" } ?? "nil"
+            let bgStr = det.bg.map { "\($0)" } ?? "nil"
+            let insulinReqStr = det.insulinReq.map { "\($0)" } ?? "nil"
+            appendLog("determination: mode=\(mode) bg=\(bgStr) iob=\(iobCurrent) eventualBG=\(eventualBGStr) rate=\(rateStr) units=\(unitsStr) insulinReq=\(insulinReqStr) isf=\(isfStr) clock=\(now)")
         }
 
         // 11. Store pump events
