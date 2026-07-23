@@ -8,6 +8,8 @@ struct GlucoseRecord: Codable {
 enum PumpEventType: String, Codable {
     case tempBasal
     case smb
+    case pumpResume
+    case pumpSuspend
 }
 
 struct PumpEventRecord: Codable {

@@ -28,10 +28,8 @@ tempBasalFunctions.setTempBasal = function setTempBasal(rate, duration, profile,
     }
 
     var suggestedRate = round_basal(rate, profile);
-    // BUG: Fixes imprecision in bounds
     var upperBound = Math.round(currenttemp.rate * 1.2 * 1000000) / 1000000;
     var lowerBound = Math.round(currenttemp.rate * 0.8 * 1000000) / 1000000;
-    //if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= currenttemp.rate * 1.2 && suggestedRate >= currenttemp.rate * 0.8 && duration > 0 ) {
     if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= upperBound && suggestedRate >= lowerBound && duration > 0 ) {
         rT.reason += " "+currenttemp.duration+"m left and " + currenttemp.rate + " ~ req " + suggestedRate + "U/hr: no temp required";
         return rT;

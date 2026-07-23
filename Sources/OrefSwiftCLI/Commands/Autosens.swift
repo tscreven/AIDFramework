@@ -71,7 +71,6 @@ struct AutosensCommand: ParsableCommand {
     @Option(name: .shortAndLong, help: "Input file path (use '-' for STDIN)")  var input: String?
 
     @Option(name: .shortAndLong, help: "Output file path (use '-' for STDOUT)")  var output: String?
-
     @Flag(name: .long, help: "Replay mode: do not write command outputs to files") var replay: Bool = false
     @Flag(name: .long, help: "Run JavaScript autosens implementation instead of Swift") var js: Bool = false
     @Flag(name: .long, help: "Run buggy JavaScript autosens implementation instead of Swift") var jsbug: Bool = false
@@ -95,7 +94,7 @@ struct AutosensCommand: ParsableCommand {
                 throw JSErrors.invalidUTF8Input
             }
 
-            let source: String = try loadSourceAlgorithm(jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
             let jsResultJSONString = try JavaScriptCommandRunner(lib: source).runAutosens(inputJSON: inputJSONString)
             let jsData = Data(jsResultJSONString.utf8)
 

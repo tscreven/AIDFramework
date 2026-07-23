@@ -30,20 +30,20 @@ public enum JSErrors: Error, CustomStringConvertible {
     }
 }
 
-public func loadSourceAlgorithm(_ jsBug: Bool, _ jsIobFix: Bool, _ jsIobAutosensFix: Bool, _ jsIobAutosensDetBasalFix: Bool) throws -> String {
+public func loadSourceAlgorithm(_ js: Bool, _ jsBug: Bool, _ jsIobFix: Bool, _ jsIobAutosensFix: Bool, _ jsIobAutosensDetBasalFix: Bool) throws -> String {
+    if js {
+        return "Sources/OrefJSAlgorithm"
+    }
     if jsBug {
-        return "Sources/BugOrefJSAlgorithm"
+        return "Sources/BuggyOrefJSAlgorithm"
     }
     else if jsIobFix {
-        return "Sources/Bug_IOB_Fix_OrefJSAlgorithm"
+        return "Sources/IOBFixedJSAlgorithm"
     }
     else if jsIobAutosensFix {
-        return "Sources/Bug_IOB+AS_Fix_OrefJSAlgorithm"
+        return "Sources/IOB+Autosens_FixedJSAlgorithm"
     }
-    else if jsIobAutosensDetBasalFix{
-        return "Sources/Bug_IOB+AS+DB_Fix_OrefJSAlgorithm"
-    }
-    return "Sources/OrefJSAlgorithm"
+    return "Sources/IOB+Autosens+DetBasal_FixedJSAlgorithm"
 }
 
 /// Run JavaScript oref version of all commands. Each command runs through a
@@ -66,6 +66,24 @@ public final class JavaScriptCommandRunner {
                 fputs("JS Exception: \(exception)\n", stderr)
             }
         }
+
+        let printToStderr: @convention(block) (String) -> Void = { message in
+            fputs(message + "\n", stderr)
+        }
+        context.setObject(printToStderr, forKeyedSubscript: "__swiftPrint" as NSString)
+
+        let appendToFile: @convention(block) (String, String) -> Void = { path, message in
+            let url = URL(fileURLWithPath: path)
+            let line = message + "\n"
+            if let handle = try? FileHandle(forWritingTo: url) {
+                handle.seekToEndOfFile()
+                handle.write(Data(line.utf8))
+                handle.closeFile()
+            } else {
+                try? line.write(to: url, atomically: true, encoding: .utf8)
+            }
+        }
+        context.setObject(appendToFile, forKeyedSubscript: "__appendToFile" as NSString)
     }
 
     // Orchestration of JavaScript oref IOB algorithm.
@@ -261,7 +279,12 @@ public final class JavaScriptCommandRunner {
     }
 
     // Orchestration of JavaScript oref Autosens algorithm.
-    func runAutosens(inputJSON: String) throws -> String {
+    /// Run autosens calculation.
+    /// - Parameter injectSwiftIOB: When true (default), pre-computed Swift IOB values replace
+    ///   the JS `find_insulin` call so autosens deviations are based on correct IOB.
+    ///   When false, the buggy JS `find_insulin` runs natively — reproducing the IOB history
+    ///   bug where the 8h window misses pump suspend events → ratio=1.
+    func runAutosens(inputJSON: String, injectSwiftIOB: Bool = true) throws -> String {
         try evaluate(preludeScript())
         try registerBuiltinModules()
         try loadOrefModules(moduleID: "/lib/determine-basal/autosens.js", jsFile: "index.js")
@@ -273,39 +296,45 @@ public final class JavaScriptCommandRunner {
             let output = try JSONCoding.encoder.encode(result)
             return String(decoding: output, as: UTF8.self)
         }
-        let treatments = try IobHistory.calcTempTreatments(
-            history: autosensInput.history.map { $0.computedEvent() },
-            profile: autosensInput.profile,
-            clock: autosensInput.clock,
-            autosens: nil,
-            zeroTempDuration: nil
-        )
-        var iobByClock: [String: [String: Any]] = [:]
-        for glucose in autosensInput.glucose {
-            let iob = try IobCalculation.iobTotal(
-                treatments: treatments,
+
+        if injectSwiftIOB {
+            let treatments = try IobHistory.calcTempTreatments(
+                history: autosensInput.history.map { $0.computedEvent() },
                 profile: autosensInput.profile,
-                time: glucose.dateString
+                clock: autosensInput.clock,
+                autosens: nil,
+                zeroTempDuration: nil
             )
-            let key = Formatter.iso8601withFractionalSeconds.string(from: glucose.dateString)
-            iobByClock[key] = [
-                "iob": NSDecimalNumber(decimal: iob.iob).doubleValue,
-                "activity": NSDecimalNumber(decimal: iob.activity).doubleValue,
-                "basaliob": NSDecimalNumber(decimal: iob.basaliob).doubleValue,
-                "bolusiob": NSDecimalNumber(decimal: iob.bolusiob).doubleValue,
-                "netbasalinsulin": NSDecimalNumber(decimal: iob.netbasalinsulin).doubleValue,
-                "bolusinsulin": NSDecimalNumber(decimal: iob.bolusinsulin).doubleValue,
-                "time": key
-            ]
+            var iobByClock: [String: [String: Any]] = [:]
+            for glucose in autosensInput.glucose {
+                let iob = try IobCalculation.iobTotal(
+                    treatments: treatments,
+                    profile: autosensInput.profile,
+                    time: glucose.dateString
+                )
+                let key = Formatter.iso8601withFractionalSeconds.string(from: glucose.dateString)
+                iobByClock[key] = [
+                    "iob": NSDecimalNumber(decimal: iob.iob).doubleValue,
+                    "activity": NSDecimalNumber(decimal: iob.activity).doubleValue,
+                    "basaliob": NSDecimalNumber(decimal: iob.basaliob).doubleValue,
+                    "bolusiob": NSDecimalNumber(decimal: iob.bolusiob).doubleValue,
+                    "netbasalinsulin": NSDecimalNumber(decimal: iob.netbasalinsulin).doubleValue,
+                    "bolusinsulin": NSDecimalNumber(decimal: iob.bolusinsulin).doubleValue,
+                    "time": key
+                ]
+            }
+            let iobByClockData = try JSONSerialization.data(withJSONObject: iobByClock)
+            let iobByClockJSON = String(decoding: iobByClockData, as: UTF8.self)
+            context.setObject(iobByClockJSON, forKeyedSubscript: "__swiftIobByClockJSON" as NSString)
         }
-        let iobByClockData = try JSONSerialization.data(withJSONObject: iobByClock)
-        let iobByClockJSON = String(decoding: iobByClockData, as: UTF8.self)
-        context.setObject(iobByClockJSON, forKeyedSubscript: "__swiftIobByClockJSON" as NSString)
 
         context.setObject(inputJSON, forKeyedSubscript: "__swiftInputJSON" as NSString)
+        let iobSetup = injectSwiftIOB
+            ? "this.__swiftIobByTime = JSON.parse(__swiftIobByClockJSON);"
+            : "this.__swiftIobByTime = null; // buggy mode: use native JS find_insulin"
         try evaluate("""
         var __swiftParsedInput = JSON.parse(__swiftInputJSON);
-        this.__swiftIobByTime = JSON.parse(__swiftIobByClockJSON);
+        \(iobSetup)
         var detectSensitivity = __require('/lib/determine-basal/autosens.js');
 
         function timeValue(x) {
@@ -669,21 +698,9 @@ var get_iob = function(iob_inputs, currentIOBOnly, treatments) {
             }
             return candidates[2];
           }
-          global.__swiftLogs = global.__swiftLogs || [];
-          global.process = global.process || {
-            stderr: { write: function(){} },
-            stdout: { write: function(){} }
-          };
-          global.console = global.console || {};
-          global.console.log = global.console.log || function(){};
-          global.console.error = function() {
-            var line = '';
-            for (var i = 0; i < arguments.length; i++) {
-              if (i > 0) line += ' ';
-              line += String(arguments[i]);
-            }
-            global.__swiftLogs.push(line);
-          };
+          var __print = function() { var args = Array.prototype.slice.call(arguments); if (typeof __swiftPrint === 'function') __swiftPrint(args.join(' ')); };
+          global.console = { log: __print, error: __print, warn: __print };
+          global.process = global.process || { stderr: { write: __print }, stdout: { write: function(){} } };
           global.__define = function(id, factory) { modules[id] = factory; };
           global.__require = function(request, fromId) {
             var id = resolve(request, fromId || '/');

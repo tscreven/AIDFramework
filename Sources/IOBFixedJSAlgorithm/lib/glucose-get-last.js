@@ -1,12 +1,3 @@
-// Rounds value to 'digits' decimal places
-function getGlucoseRound(value, digits) {
-    if (! digits) { digits = 0; }
-    var scale = Math.pow(10, digits);
-    // BUG: Fixes imprecision in rounding
-    //return Math.round(value * scale) / scale;
-    return Math.round(Math.round(value * scale * 10000000)/10000000) / scale;
-}
-
 function getDateFromEntry(entry) {
   return entry.date || Date.parse(entry.display_time) || Date.parse(entry.dateString);
 }
@@ -44,7 +35,7 @@ var getLastGlucose = function (data) {
             var avgdelta = 0;
             var minutesago;
             if (typeof then_date !== 'undefined' && typeof now_date !== 'undefined') {
-                minutesago = getGlucoseRound( (now_date - then_date) / (1000 * 60), 0 );
+                minutesago = Math.round( (now_date - then_date) / (1000 * 60) );
                 // multiply by 5 to get the same units as delta, i.e. mg/dL/5m
                 change = now.glucose - then.glucose;
                 avgdelta = change/minutesago * 5;
@@ -86,11 +77,11 @@ var getLastGlucose = function (data) {
     }
 
     return {
-        delta: getGlucoseRound( last_delta, 2)
-        , glucose: getGlucoseRound( now.glucose, 2)
-        , noise: getGlucoseRound(now.noise, 2)
-        , short_avgdelta: getGlucoseRound( short_avgdelta, 2)
-        , long_avgdelta: getGlucoseRound( long_avgdelta, 2)
+        delta: Math.round( last_delta * 100 ) / 100
+        , glucose: Math.round( now.glucose * 100 ) / 100
+        , noise: Math.round(now.noise)
+        , short_avgdelta: Math.round( short_avgdelta * 100 ) / 100
+        , long_avgdelta: Math.round( long_avgdelta * 100 ) / 100
         , date: now_date
         , last_cal: last_cal
         , device: now.device

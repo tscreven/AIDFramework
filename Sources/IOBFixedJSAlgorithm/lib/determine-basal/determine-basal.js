@@ -19,9 +19,7 @@ var round_basal = require('../round-basal');
 function round(value, digits) {
     if (! digits) { digits = 0; }
     var scale = Math.pow(10, digits);
-    // BUG: Fixes imprecision in rounding
-    //return Math.round(value * scale) / scale;
-    return Math.round(Math.round(value * scale * 10000000)/10000000) / scale;
+    return Math.round(value * scale) / scale;
 }
 
 // we expect BG to rise or fall at the rate of BGI,
@@ -142,6 +140,8 @@ function enable_smb(profile, microBolusAllowed, meal_data, bg, target_bg, high_b
 
 var determine_basal = function determine_basal(glucose_status, currenttemp, iob_data, profile, autosens_data, meal_data, tempBasalFunctions, microBolusAllowed, reservoir_data, currentTime, pumphistory, preferences, basalprofile, trio_custom_variables, middleWare) {
 
+    
+    __appendToFile('temp.txt', 'Fixed determineBasal: autosens=' + JSON.stringify(autosens_data) + ' iob=' + JSON.stringify(iob_data));
     var profileTarget = profile.min_bg;
     var overrideTarget = trio_custom_variables.overrideTarget;
     if (overrideTarget != 0 && overrideTarget != 6 && trio_custom_variables.useOverride && !profile.temptargetSet) {
@@ -668,11 +668,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
 // and before returning (doing nothing) below if eventualBG is undefined.
     var lastTempAge;
     if (typeof iob_data.lastTemp !== 'undefined' ) {
-        // BUG: When the pump has recently resumed and there aren't any
-        // temp basal commands it has the wrong time in `date`, so use
-        // timestamp instead for consistency with Swift
-        var lastTempDate = new Date(iob_data.lastTemp.timestamp).getTime();
-        lastTempAge = round(( new Date(systemTime).getTime() - lastTempDate ) / 60000); // in minutes
+        lastTempAge = round(( new Date(systemTime).getTime() - iob_data.lastTemp.date ) / 60000); // in minutes
     } else {
         lastTempAge = 0;
     }
@@ -689,7 +685,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         //console.error(lastTempAge, round(iob_data.lastTemp.duration,1), round(lastTempAge - iob_data.lastTemp.duration,1));
         var lastTempEnded = lastTempAge - iob_data.lastTemp.duration;
         if ( lastTempEnded > 5 && lastTempAge > 10 ) {
-            rT.reason = "Warning: currenttemp running but lastTemp from pumphistory ended " + round(lastTempEnded, 2) + "m ago; canceling temp"; // reason.conclusion started
+            rT.reason = "Warning: currenttemp running but lastTemp from pumphistory ended " + lastTempEnded + "m ago; canceling temp"; // reason.conclusion started
             //console.error(currenttemp, round(iob_data.lastTemp,1), round(lastTempAge,1));
             return tempBasalFunctions.setTempBasal(0, 0, profile, rT, currenttemp);
         }
@@ -699,9 +695,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
 // This has to happen after we obtain iob_data
 
     //calculate BG impact: the amount BG "should" be rising or falling based on insulin activity alone
-    // BUG: This is a small imprecision fix that causes large differences in forecasts
-    var bgiPreRound = round(( -iob_data.activity * sens * 5 ), 5);
-    var bgi = round(bgiPreRound, 2);
+    var bgi = round(( -iob_data.activity * sens * 5 ), 2);
     // project deviations for 30 minutes
     var deviation = round( 30 / 5 * ( minDelta - bgi ) );
     // don't overreact to a big negative delta: use minAvgDelta if deviation is negative
@@ -794,8 +788,8 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     var cid = 0;
     // calculate current carb absorption rate, and how long to absorb all carbs
     // CI = current carb impact on BG in mg/dL/5m
-    ci = round(minDelta - bgi, 1);
-    var uci = round(minDelta - bgi, 1);
+    ci = round((minDelta - bgi),1);
+    var uci = round((minDelta - bgi),1);
     // ISF (mg/dL/U) / CR (g/U) = CSF (mg/dL/g)
 
     // use autosens-adjusted sens to counteract autosens meal insulin dosing adjustments so that
@@ -830,7 +824,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         var fractionCOBAbsorbed = ( meal_data.carbs - meal_data.mealCOB ) / meal_data.carbs;
         // if the lastCarbTime was 1h ago, increase remainingCATime by 1.5 hours
         remainingCATime = remainingCATimeMin + 1.5 * lastCarbAge/60;
-        remainingCATime = round(remainingCATime, 1);
+        remainingCATime = round(remainingCATime,1);
         //console.error(fractionCOBAbsorbed, remainingCATimeAdjustment, remainingCATime)
         console.error("Last carbs " + lastCarbAge + " minutes ago; remainingCATime:" + remainingCATime + "hours; " + round(fractionCOBAbsorbed*100, 1) + "% carbs absorbed");
     }
@@ -852,8 +846,6 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     // area of the /\ triangle is the same as a remainingCIpeak-height rectangle out to remainingCATime/2
     // remainingCIpeak (mg/dL/5m) = remainingCarbs (g) * CSF (mg/dL/g) * 5 (m/5m) * 1h/60m / (remainingCATime/2) (h)
     var remainingCIpeak = remainingCarbs * csf * 5 / 60 / (remainingCATime/2);
-    // BUG: we can get really small remaining CI peak from precision errors
-    remainingCIpeak = Math.round(remainingCIpeak * 10000000) / 10000000;
     //console.error(profile.min_5m_carbimpact,ci,totalCI,totalCA,remainingCarbs,remainingCI,remainingCATime);
 
     // calculate peak deviation in last hour, and slope from that to current deviation
@@ -1346,21 +1338,17 @@ var maxDelta_bg_threshold;
 
         // if required temp < existing temp basal
         insulinScheduled = currenttemp.duration * (currenttemp.rate - basal) / 60;
-        // BUG: Adding precision to insulinScheduled
-        insulinScheduled = Math.round(insulinScheduled * 1000000) / 1000000;
         // if current temp would deliver a lot (30% of basal) less than the required insulin,
         // by both normal and naive calculations, then raise the rate
         var minInsulinReq = Math.min(insulinReq,naiveInsulinReq);
 
         console.log("naiveInsulinReq:" + naiveInsulinReq);
 
-        // BUG: Add rounding for precision
-        if (insulinScheduled < Math.round((minInsulinReq - basal*0.3) * 1000000) / 1000000) {
+        if (insulinScheduled < minInsulinReq - basal*0.3) {
             rT.reason += ", " + currenttemp.duration + "m@" + (currenttemp.rate).toFixed(2) + " is a lot less than needed. ";
             return tempBasalFunctions.setTempBasal(rate, 30, profile, rT, currenttemp);
         }
-        // BUG: Adding precision to the rate calc
-        if (typeof currenttemp.rate !== 'undefined' && (currenttemp.duration > 5 && rate >= Math.round(currenttemp.rate * 0.8 * 1000000)/1000000)) {
+        if (typeof currenttemp.rate !== 'undefined' && (currenttemp.duration > 5 && rate >= currenttemp.rate * 0.8)) {
             rT.reason += ", temp " + currenttemp.rate + " ~< req " + rate + "U/hr. ";
             return rT;
         }
@@ -1485,8 +1473,7 @@ var maxDelta_bg_threshold;
 
         if (insulinForManualBolus > max_iob-iob_data.iob) {
             console.error("Ev. Bolus limited by maxIOB: " + max_iob-iob_data.iob + " (. insulinForManualBolus: " + insulinForManualBolus + " U)");
-            // BUG: Commenting out because Trio doesn't support insulinForManualBolus
-            //rT.reason += "max_iob " + max_iob + ", ";
+            rT.reason += "max_iob " + max_iob + ", ";
         } else { console.error("Ev. Bolus would not be limited by maxIOB ( insulinForManualBolus: " + insulinForManualBolus + " U).");}
 
         // rate required to deliver insulinReq more insulin over 30m:
@@ -1626,8 +1613,6 @@ var maxDelta_bg_threshold;
         }
 
         var maxSafeBasal = tempBasalFunctions.getMaxSafeBasal(profile);
-        // BUG: Add precision to this calculation
-        maxSafeBasal = Math.round(maxSafeBasal * 1000000) / 1000000;
 
         if (rate > maxSafeBasal) {
             rT.reason += "adj. req. rate: " + rate + " to maxSafeBasal: " + round(maxSafeBasal,2) + ", ";
@@ -1635,8 +1620,6 @@ var maxDelta_bg_threshold;
         }
 
         insulinScheduled = currenttemp.duration * (currenttemp.rate - basal) / 60;
-        // BUG: imprecision impacts control flow
-        insulinScheduled = Math.round(insulinScheduled * 1000000) / 1000000;
         if (insulinScheduled >= insulinReq * 2) { // if current temp would deliver >2x more than the required insulin, lower the rate
             rT.reason += currenttemp.duration + "m@" + (currenttemp.rate).toFixed(2) + " > 2 * insulinReq. Setting temp basal of " + rate + "U/hr. ";
             return tempBasalFunctions.setTempBasal(rate, 30, profile, rT, currenttemp);
