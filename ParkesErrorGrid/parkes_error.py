@@ -76,19 +76,26 @@ class ParkesError():
             count[zone] += 1
         return count
     
-    def zone_indices(self):
-        letter_map = {0: 'A', 1: 'D', 2: 'C', 3: 'B', 4: 'B', 5: 'C', 6: 'D', 7: 'E'}
-        return [letter_map[zone] for zone in self.zones]
-    
-    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=""):
+    def plot(self, title, x_axis, y_axis, size=2, save_fig_path="", ax=None):
 
-        plt.figure(dpi=600)
-        plt.clf()
-        plt.title(title)
-        plt.xlabel(x_axis)
-        plt.ylabel(y_axis)
-        plt.xlim((0, 400))
-        plt.ylim((0, 400))
+        if ax is None:
+            plt.figure(dpi=600)
+            plt.clf()
+            ax = plt.gca()
+
+        ax.set_title(title)
+        ax.set_xlabel(x_axis)
+        ax.set_ylabel(y_axis)
+        ax.set_xlim((0, 400))
+        ax.set_ylim((0, 400))
+
+        '''e_points = [[0,150],[35,155],[50,550]]
+        ud_points = [[0,100],[25,100],[50,125],[80,215],[125,550]]
+        ld_points = [[250,0],[250,40],[550,150]]
+        uc_points = [[0,60],[30,60],[50,80],[70,110],[260,550]]
+        lc_points = [[120,0],[120,30],[260,130],[550,250]]
+        ub_points = [[0,50],[30,50],[140,170],[280,380],[430,550]]
+        lb_points = [[50,0],[50,30],[170,145],[385,300],[550,450]]'''
 
         e_points = [[0,150],[35,155],[50,400]]
         ud_points = [[0,100],[25,100],[50,125],[80,215],[125,400]]
@@ -100,23 +107,23 @@ class ParkesError():
 
         for points in [e_points, ud_points, ld_points, uc_points, lc_points, ub_points, lb_points]:
             for i in range(len(points)-1):
-                plt.plot(
+                ax.plot(
                     [points[i][0], points[i+1][0]],
                     [points[i][1], points[i+1][1]],
                     color='black',
                     linewidth=0.8
                 )
-        plt.plot([0, 400], [0, 400], color='black', linewidth=0.8, ls="--")
+        ax.plot([0, 400], [0, 400], color='black', linewidth=0.8, ls="--")
 
         zone_letter_locs = [('E', 18, 366), ('D', 80, 360), ('C', 153, 348),
                             ('B', 220, 313), ('A', 248, 284), ('A', 278, 244),
                             ('B', 295, 200), ('C', 315, 124), ('D', 335, 51)]
 
         for label, x, y in zone_letter_locs:
-            plt.text(x, y, label, color='black', fontsize=18, 
-                     fontweight='bold', ha='center', va='center')
-        
-        colors = {'A': "#2ecc71", 'B': "#3498db", 'C': "#f39c12", 
+            ax.text(x, y, label, color='black', fontsize=18,
+                    fontweight='bold', ha='center', va='center')
+
+        colors = {'A': "#2ecc71", 'B': "#3498db", 'C': "#f39c12",
                   'D': "#e74c3c", 'E': "#9b59b6"}
         x_trace = np.array(self.x_trace)
         y_trace = np.array(self.y_trace)
@@ -126,13 +133,12 @@ class ParkesError():
             mask = np.isin(zones, zone_ids)
             zone_count = np.count_nonzero(mask)
             zone_label = f"Zone {zone_name} {zone_count} ({round(100 * zone_count/len(self.zones), 2)}%)"
+            ax.scatter(x_trace[mask], y_trace[mask], label=zone_label,
+                       marker='o', color=colors[zone_name], s=size)
 
-            plt.scatter(x_trace[mask], y_trace[mask], label=zone_label,
-                        marker='o', color=colors[zone_name], s=size)
-        
-        plt.legend(loc="upper left", fontsize=9, markerscale=2)
+        ax.legend(loc="upper left", fontsize=9, markerscale=2)
 
-        if len(save_fig_path) > 0: 
-            plt.savefig(save_fig_path)
+        if len(save_fig_path) > 0:
+            ax.get_figure().savefig(save_fig_path)
 
-        return plt
+        return ax

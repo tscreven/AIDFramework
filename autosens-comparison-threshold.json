@@ -1,0 +1,4688 @@
+{
+  "type": "autosens",
+  "compared": 2204,
+  "errors": 0,
+  "exceeding": 360,
+  "entries": [
+    {
+      "filePath": "/files/2be29626-fa9f-4029-8181-32638096a9b1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.54,
+          "js": 1.04,
+          "delta": 0.5,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.5
+    },
+    {
+      "filePath": "/files/59613bcf-c97b-4003-aef0-d0fc1c8bb647.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.5,
+          "js": 1,
+          "delta": 0.5,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.5
+    },
+    {
+      "filePath": "/files/cf4d85d7-44d4-4903-aa3d-29d0f8a438e6.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.5,
+          "js": 1,
+          "delta": 0.5,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.5
+    },
+    {
+      "filePath": "/files/a2fb5c13-19d7-41c4-b6fb-4273b5d82c93.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.63,
+          "js": 1.04,
+          "delta": 0.41,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.41
+    },
+    {
+      "filePath": "/files/800b5b00-9fd9-494a-9a9f-82c6e6b217e3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.6,
+          "js": 0.99,
+          "delta": 0.39,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.39
+    },
+    {
+      "filePath": "/files/95b6d477-4248-49cb-b5ba-48fa3ec6e21f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.62,
+          "js": 0.98,
+          "delta": 0.36,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.36
+    },
+    {
+      "filePath": "/files/db7e739f-1b63-47dc-ba9d-dc27292d2022.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.77,
+          "js": 1.12,
+          "delta": 0.35,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.35
+    },
+    {
+      "filePath": "/files/c0fb23ae-f16d-4cee-a4bc-f0d718673042.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 1.04,
+          "delta": 0.34,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.34
+    },
+    {
+      "filePath": "/files/73e663aa-09f4-43f7-a458-71ecf8dd094e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.65,
+          "js": 0.98,
+          "delta": 0.33,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.33
+    },
+    {
+      "filePath": "/files/6dfb9aa9-b1af-4c07-81cf-2b08eae10575.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.78,
+          "js": 1.09,
+          "delta": 0.31,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.31
+    },
+    {
+      "filePath": "/files/12f4fe1d-463e-45f2-9c70-0d92b75cb060.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 1,
+          "delta": 0.3,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.3
+    },
+    {
+      "filePath": "/files/1ec1b5cd-1775-451f-9e38-5e1a53f8f759.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 1,
+          "delta": 0.3,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.3
+    },
+    {
+      "filePath": "/files/e0014342-7825-441b-85f3-88b6dc2b2400.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.74,
+          "js": 0.98,
+          "delta": 0.24,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.24
+    },
+    {
+      "filePath": "/files/0954d0cc-7932-42c0-9ce9-9d979db62b01.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.76,
+          "js": 0.98,
+          "delta": 0.22,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.22
+    },
+    {
+      "filePath": "/files/10921b07-7773-4851-9e81-883c9d056bf0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.78,
+          "js": 1,
+          "delta": 0.22,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.22
+    },
+    {
+      "filePath": "/files/9482f334-9e5d-4ddc-9304-c0e98e4737ba.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.78,
+          "js": 1,
+          "delta": 0.22,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.22
+    },
+    {
+      "filePath": "/files/7e86f8dc-a06b-4dd3-9084-a39c79d4d203.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.8,
+          "js": 1,
+          "delta": 0.2,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.2
+    },
+    {
+      "filePath": "/files/9e146319-5160-482e-9135-f461b97f1a9f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.81,
+          "js": 1,
+          "delta": 0.19,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.19
+    },
+    {
+      "filePath": "/files/5d69bda6-2c3e-4728-b784-e0a69c41f48a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 0.82,
+          "delta": 0.18,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.18
+    },
+    {
+      "filePath": "/files/b45e62da-ace0-401b-a6f2-8fd3768059db.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.93,
+          "delta": 0.18,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.18
+    },
+    {
+      "filePath": "/files/4ddc645b-98a7-4234-aa66-bdf17dac17fd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.83,
+          "js": 1,
+          "delta": 0.17,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.17
+    },
+    {
+      "filePath": "/files/a88cd421-f8ad-48a4-8d41-aaf56bcd89a0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.74,
+          "js": 0.91,
+          "delta": 0.17,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.17
+    },
+    {
+      "filePath": "/files/e9ea5125-b34e-432d-8d72-eec264efa258.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 0.85,
+          "delta": 0.15,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.15
+    },
+    {
+      "filePath": "/files/e9ea5125-b34e-432d-8d72-eec264efa258.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 0.85,
+          "delta": 0.15,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.15
+    },
+    {
+      "filePath": "/files/c7eb2738-86ea-41c5-b6c0-9c8b8a33b021.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.19,
+          "js": 1.33,
+          "delta": 0.14,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.14
+    },
+    {
+      "filePath": "/files/accab896-4769-4629-b1f5-01a6e175645b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.76,
+          "js": 0.9,
+          "delta": 0.14,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.14
+    },
+    {
+      "filePath": "/files/3b3df649-8c63-4b69-8519-11067ab42358.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.03,
+          "delta": 0.14,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.14
+    },
+    {
+      "filePath": "/files/d7b5949f-2901-432f-afcf-fcb748b2bd7f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.19,
+          "js": 1.32,
+          "delta": 0.13,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.13
+    },
+    {
+      "filePath": "/files/1caffebd-bc52-449d-b0f7-783c26e25975.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.25,
+          "delta": 0.12,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.12
+    },
+    {
+      "filePath": "/files/3ed02451-3deb-410e-b965-a57d80a1e441.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.21,
+          "js": 1.33,
+          "delta": 0.12,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.12
+    },
+    {
+      "filePath": "/files/5c3a05f9-f933-49ae-8685-32586c58b395.21.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.02,
+          "delta": 0.12,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.12
+    },
+    {
+      "filePath": "/files/f6e5a6c5-c992-4dc1-820f-ac7f4fcc64e4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.88,
+          "js": 1,
+          "delta": 0.12,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.12
+    },
+    {
+      "filePath": "/files/e4dd36b6-4e7f-4de2-8d8f-12de695246c7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.08,
+          "delta": 0.12,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.12
+    },
+    {
+      "filePath": "/files/2d440f1e-2b23-4380-b961-4f443249b360.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.88,
+          "js": 0.77,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/7de29cd9-047a-44bb-b35e-617961091a7e.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.15,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/a92933ee-c7bf-455a-b9b7-f4c352779129.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.39,
+          "js": 1.5,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/b0d5b621-e187-4472-9a1c-09ce9fc36bcf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.11,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/9c4dd1ac-ae15-444c-834e-c16f6f158782.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.84,
+          "js": 0.95,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/b2f650e2-a0e1-406b-bad3-d80eec019a0a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.14,
+          "delta": 0.11,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.11
+    },
+    {
+      "filePath": "/files/1a76bbfc-602f-47cc-a292-2ff089974710.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.87,
+          "js": 0.77,
+          "delta": 0.1,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.1
+    },
+    {
+      "filePath": "/files/4ad64e09-c551-4cae-bce7-5ab71eb1c06a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.2,
+          "delta": 0.1,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.1
+    },
+    {
+      "filePath": "/files/5f202adf-68c2-4984-b7a8-fcd8cf2e7923.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.28,
+          "delta": 0.1,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.1
+    },
+    {
+      "filePath": "/files/4652400f-2150-462f-bcce-d41bae1b004b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.28,
+          "delta": 0.1,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.1
+    },
+    {
+      "filePath": "/files/ed897cb3-9215-4929-84f4-13784c8c12fc.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.16,
+          "delta": 0.1,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.1
+    },
+    {
+      "filePath": "/files/b1ef06f1-449a-4427-b301-79875166b901.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.41,
+          "js": 1.5,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/1958018c-9dd3-4f71-bda5-04012c0d442b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.27,
+          "js": 1.36,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/70d663a3-10bb-4b2a-a3d1-b9a0cd3e85ab.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.8,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/7f9f7364-0268-460d-9c41-51158635c468.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.14,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/a59c9c60-c3f4-430e-83c7-0e52143336da.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.15,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/bc34ac70-8c60-48ed-b82e-42cbc5fc3925.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.15,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/dcf6d173-61b9-4cc3-8bf6-4b973a21cee4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.14,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/e1de68c2-3c18-497a-af16-f0caa3d125f0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.14,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/ef733538-9ae8-4615-b289-f4749dd3488f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.02,
+          "js": 1.11,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/ea51aa2a-bfed-4072-9806-673af2a90685.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.11,
+          "delta": 0.09,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.09
+    },
+    {
+      "filePath": "/files/1f817767-bc63-4408-be6f-fe7e43416438.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.15,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/3844718e-2224-4dbf-b445-eb252090259f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.16,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/3eec608d-9818-400f-82f1-842fd6d7043d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/469c3062-23e6-46bb-a31b-8806bd941e4c.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.83,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/46db31db-3b68-4a73-91d6-0dc570a0cc2e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.28,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/540be011-62cf-4131-ac3d-232c96e30a81.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.15,
+          "js": 1.23,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/5fed526b-733a-4051-b5ad-0fbb5dca8ef2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.28,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/7de29cd9-047a-44bb-b35e-617961091a7e.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.17,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/ac4568c5-63c4-42bd-b37a-6513ad7ce1d3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.27,
+          "js": 1.35,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/b8e8845d-e6c7-486b-b378-2a2f47ce4905.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.28,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/cb57ed31-4813-4c3f-8c95-3fd949e5fedd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 0.78,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/cbf389d8-bdf9-472f-b044-149dd5d6e3a9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 0.78,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/340f0f93-cf9c-4342-93a7-b941f20fcfbb.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.82,
+          "js": 0.9,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/0c2d1f74-8e8c-464d-94e7-b95cad197233.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.34,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/0e296836-7693-4510-87d4-6fe383daf465.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.08,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/0f74df0d-788b-4fff-a5bc-ebfd33a6fb4b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.81,
+          "js": 0.89,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/26dd2d25-c2ca-4511-b32d-16dec5af1ee3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.26,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/31bc9cb9-627e-4977-a07e-870504566c58.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.16,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/3774e532-6e4f-44e4-8be7-9e4dbcbd7b0a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.12,
+          "js": 1.2,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/42c8277c-1194-4bc7-b15d-d645ed14c2d1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.11,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/45bf3a81-5af3-41ec-a50a-2da2541aa6a7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.11,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/4914d649-1732-4082-bc0b-112e89480c2f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.08,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/50a5ad72-3d67-4218-9bed-4a352f76f455.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.08,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/55f5649b-e540-49f4-a3f5-6d86b9b6b6a5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.16,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/64f8c889-d039-4b8b-b6e8-478567af52a1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.14,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/69ea1c66-23b5-4ba1-87d4-0c48ce8a27f0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.15,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/9c2c69b6-7b9c-475a-89a1-51a348f286de.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.08,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/a0de5dd6-a737-4bed-8d5e-b0f230e64d76.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.14,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/a6517d0b-ea8e-4636-9d28-63c68bd69324.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.11,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/db5f425c-10bc-4730-a7a8-bbb658b43bb5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.34,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/df2428fc-10c6-4976-8bad-6869a1f892a4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.16,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/e357a3b4-c284-44e3-a19d-989313ca7550.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.18,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/e4855ad0-e694-4919-a3d0-ce2761d4a3a1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.26,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/e58b449f-49bd-4b38-8f29-5497d5ed7e00.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.13,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/ef8120a8-9c5d-470f-bd32-59eb47522e4e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.15,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/fadfe8f1-f9cb-4b86-83f8-134e29c0b4a0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.98,
+          "js": 0.9,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/5df521f1-1cc8-4af5-a6d9-b0be27ae1743.22.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.08,
+          "delta": 0.08,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.08
+    },
+    {
+      "filePath": "/files/0f3d6116-7feb-4552-b131-d51d79add028.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.43,
+          "js": 1.5,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/39b41b11-2c23-4b01-b722-842333433d74.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.12,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/5ca38374-e5a7-4a29-8b1f-19ba181e4235.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.16,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/7af6ae5b-ea02-49e7-b5e0-8df60652954e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 1,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/9c76454d-8af2-4910-b1a3-7ed46ce8018c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.16,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/a7f81b7f-f100-451a-8f48-a9ab780e2b36.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.13,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/1468c7cf-a35d-494c-9b27-b64e7e3c84b6.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.2,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/2d86ea26-a5ef-4bfc-911b-bb5f20da2e10.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.76,
+          "js": 0.83,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/3bfefb36-633f-416c-afe0-79cced1a4126.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.12,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/724aa3d7-3540-4551-8c27-2427c6af057f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.33,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/8d1336d6-719d-429b-98e0-a2873a808d31.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.33,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/aac039ee-5720-4c5f-bddd-626a981cfdd6.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.11,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/cee8db6b-1659-4c88-baa7-a7e3476207b1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.16,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/58b36adf-d2b5-44c2-bcd7-92cf4254f072.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.07,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/616360be-2e44-47ce-b862-d8fc21bc891d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.11,
+          "delta": 0.07,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.07
+    },
+    {
+      "filePath": "/files/36d00333-9756-49ec-83dc-7f15c70c1e2e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.09,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/b38203b2-49f2-4ffc-aba4-4c592c77672f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.19,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/094b8a49-c50e-488b-9b73-f835620ae9ba.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.23,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/36f8665d-c583-40ed-9e21-8f705350d0e4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.74,
+          "js": 0.8,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/3fc85d37-16bf-4a85-84a9-73db08158127.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.91,
+          "js": 0.85,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/4b113f43-6a61-4623-b66b-ec19fe938fa3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.11,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/591ebe4a-c4b9-4714-bc14-02ce5c7968dc.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.11,
+          "js": 1.17,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/78175c13-1190-475f-adbd-9c63ac49841c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.15,
+          "js": 1.21,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/8929e7d0-05fa-4045-b59e-cf0eb712df6f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.11,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/92131f5f-97bc-4d75-8e40-df0b538c265d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.14,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/aed6d750-059d-4ada-87da-deb985d14856.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.09,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/afb8afed-a103-4199-81a7-6567fa2dc03c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.99,
+          "js": 0.93,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/c74ca0ff-fa81-4e01-9b53-8503a7ddbf47.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.15,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/c74ca0ff-fa81-4e01-9b53-8503a7ddbf47.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.11,
+          "js": 1.17,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/dfb118aa-bb21-4c25-9c2c-af837e8af3d3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.7,
+          "js": 0.76,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/e04a2f92-c528-4f8d-95f8-b4c52979f78f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.11,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/ebc35cab-d58a-4017-b11b-8879028c36ce.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.19,
+          "js": 1.25,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/efc61f38-ffdd-433e-bdbb-f51bea77901f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.06,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/9f2da03a-4bdf-4b72-8abb-4a1412dac764.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.14,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/e8d450d9-f451-4322-85a1-8f3aa0a0bbdf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.14,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/175cc49a-1132-489d-af6a-34267ed65a10.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.2,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/21e442e7-fb37-4c29-846d-3dd57e1c2927.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.09,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/2bb81e30-f31c-4c81-849a-e4972ad0062f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.32,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/467b48d9-b9ac-4f74-8eb2-d9839d1c32c8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.14,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/48e08a6a-ffee-45c4-ac5e-1df344222e8d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.16,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/48fd21c9-35fa-4426-b187-52d0b08c45d9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.1,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/4affb107-c9af-4f18-94ce-1474182ba0a5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.22,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/5bfe000f-2dd0-4704-9c34-d3a575682383.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.76,
+          "js": 0.82,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/5c228b8b-6b16-4149-83df-05bd2cb51c4f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.19,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/68f401c0-a855-4489-8c37-06ff7f9766d5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.19,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/69b40f8c-8950-429a-a162-c440df7ec440.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.81,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/6dcbae7a-85ac-432a-b9f8-1bbd609f6d4e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.72,
+          "js": 0.78,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/73e8e520-076d-405a-885a-1c296de6731f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.94,
+          "js": 1,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/7e701bdb-8129-4252-962a-496f2c687bc6.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.2,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/91177d6a-b944-442c-a5aa-5dc0eddd4d25.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.32,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/a524e24e-9e57-4114-bd36-d08e95dd5bbf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.99,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/ac71ed48-8617-4e9f-9d0a-1c3be134723a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.25,
+          "js": 1.31,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/beccad45-9f5e-4ddf-b3e9-13efff9b5120.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.23,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/caea2a2e-7606-4938-a81f-d93a694283b8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.81,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/d7ed4aff-22f4-422f-9796-5ea5ee67b791.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.77,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/dff6da77-cc8e-404e-ba46-a31cb68d35ec.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.11,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/e56913d3-5b64-4827-a24c-d6e8305e47cf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.15,
+          "js": 1.21,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/f2ab8548-4dfe-4098-8e06-1d9693d2c03f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.09,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/fe2a8d4d-e95d-4ee4-9410-60c9bd4aa512.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.22,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/3b9f9243-b908-49e7-89b3-1ed76b932ffb.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.97,
+          "js": 0.91,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/ae2636a2-5afb-41f6-8ede-3eab28dacd11.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.99,
+          "js": 0.93,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/0227d5ff-1e79-4f12-bdf3-711f496c8c45.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.09,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/0949f6b5-ed4c-4bbd-8ab4-13dc9d086b2b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.15,
+          "delta": 0.06,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.06
+    },
+    {
+      "filePath": "/files/0677498a-2a19-46be-92c1-f0f1092898a5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.45,
+          "js": 1.5,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/1348802d-6a66-4798-bef8-a7b212e4f4be.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.19,
+          "js": 1.24,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/425dae85-3545-4871-9aef-ac56312e18df.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.98,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/520a92e3-a1a0-4810-8e3e-73138d382642.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.21,
+          "js": 1.26,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/78870021-9249-43f1-b748-0a4785874ded.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.45,
+          "js": 1.5,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/85875401-de8c-4e4c-a103-a6a14f6ea20b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.99,
+          "js": 0.94,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/9d7332a0-6db3-46a9-b81f-8c87a78dc231.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/a14a7b48-9c8d-4abe-94f1-da8e2ac13c02.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.8,
+          "js": 0.75,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/d03e1626-b641-44bd-bcf2-8f7256c75107.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.12,
+          "js": 1.17,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/dcb39f52-7477-4344-b767-a09fd183dbe7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.15,
+          "js": 1.2,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/fed6f8fd-82d7-4f23-9113-15f4b50151fa.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/438e3ed9-1951-42a8-bc5d-32548daec3a0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.91,
+          "js": 0.96,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/7dc36efe-3d24-4b53-bb18-e3a3d2610393.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.76,
+          "js": 0.81,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/1b087ef3-b8d6-4a77-9506-c70dbdcf432d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.12,
+          "js": 1.17,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/1ec83844-ef94-4450-954a-b8ea07745f81.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.8,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/2cc9d2c3-7d56-4a58-9d7e-0448f7c48ca2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.5,
+          "js": 0.55,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/4c9d83e8-19f6-45c7-8d42-fe6fb5cb4622.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.06,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/86c8f263-b130-4f73-8e4e-5745033a4e14.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.12,
+          "js": 1.17,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/dc3bca55-97b3-4ecf-b5e3-af2a3075fb1a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.06,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/003ff634-3000-421a-a828-50b37ac66ffe.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 1,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/0a1b2097-9c64-4888-b4b4-2c3600e204e7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.01,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/0cf421b7-abf7-43b9-be86-9cfae9dd137a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.11,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/380b2673-19ed-475a-9aa2-8c81486a1cd1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.11,
+          "js": 1.16,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/56fba99a-76a8-401a-8481-6d8e1f4b4cb9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.06,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/a61e8756-551f-47c2-ac9d-9ead786b7fb2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.1,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/f699e70a-8939-4bda-86dd-42565aa933f3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.08,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/faf55060-9b72-47b1-b93b-cf4be382eadd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.15,
+          "delta": 0.05,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.05
+    },
+    {
+      "filePath": "/files/0818c02e-453d-4274-bbf7-c1cfdebc9ace.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.09,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/19118bfe-8dc2-4315-81bf-811096cb8095.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.97,
+          "js": 0.93,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/22419dc3-27f1-4414-9e4b-15c54a4a8a9b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.84,
+          "js": 0.8,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/25f0ec84-7f88-4277-a93a-e902c78b903d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.08,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/25f0ec84-7f88-4277-a93a-e902c78b903d.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.08,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/349c3932-10f7-4835-a5c3-64bd7b5a5376.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/360c423c-e398-4a30-a237-5a89704f971f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/51ec46a3-ee3a-4523-904c-c9579236194e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.9,
+          "js": 0.86,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/521c5c8d-a736-4656-ba82-9aa587613aab.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.46,
+          "js": 1.5,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/594ae68f-1181-491c-b12a-9b6dbf6b5dee.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/5c3a05f9-f933-49ae-8685-32586c58b395.19.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.16,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/5faa1108-288e-4fd9-ab25-ba9e90465704.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/6e7d5998-23ad-4db2-9639-b01b2becdf6b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.08,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/6fa0be18-e2f5-4a19-be6d-8772cfbad13e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.74,
+          "js": 0.7,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/9d26164e-170e-40b2-92b3-e4a5ece5fbcd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.13,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/9ff368ee-e261-4256-b413-5afa07857487.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/a89e8db4-309e-4b24-9f9a-79666abaa2fd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.71,
+          "js": 0.75,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/bdbb386a-cf5d-4e72-a7d6-3513bc2d04be.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.74,
+          "js": 0.7,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/c74ca0ff-fa81-4e01-9b53-8503a7ddbf47.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.18,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/c74ca0ff-fa81-4e01-9b53-8503a7ddbf47.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.2,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/ca6cad80-8113-495f-b1c4-534495c50377.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.15,
+          "js": 1.19,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/cd5eb531-557f-4672-ab36-d2c387b2d2f9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.13,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/dcb39f52-7477-4344-b767-a09fd183dbe7.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.2,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/ef4f2404-cb8f-41ec-a6f8-91b831408ee7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 0.99,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/202f2022-17e0-47b2-8680-f0ccf376dfe2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/48169848-11fb-4885-9a1c-c8d369d927e5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.12,
+          "js": 1.16,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/4f926b92-f216-4f3f-82b6-5f2b1a1f3d51.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.21,
+          "js": 1.25,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/6725fde9-7e44-44b6-ae64-364f2019fc51.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.14,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/7f290edb-0455-4d7a-94e5-af1123cff8e3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.1,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/8240a040-7db4-4f37-8e3d-0167350d61c4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/88942f86-54ec-464e-9b4a-e5a4dbb46748.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.85,
+          "js": 0.89,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/8ca40652-5cf5-40c3-9d05-87093ed3f4bf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.22,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/8cdc8544-805d-49c7-8b79-f7d59c16f97e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/c40552bb-f411-4c82-b85f-259d2e6bb8ee.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.25,
+          "js": 1.29,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/da1f4503-9f0a-48cd-89cb-3fb767cc62b7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.88,
+          "js": 0.84,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/5df521f1-1cc8-4af5-a6d9-b0be27ae1743.26.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/0557a0ce-bd7c-44b1-ac0e-56ba29d9284a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/11585d09-0e0f-41db-8be7-2ffc4dcea29d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.13,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/203f7ebe-0c39-4c80-969e-fa974be809da.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.12,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/27dbdbaf-259a-4831-8ac0-daed95980c40.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.14,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/301e4770-a61b-43fa-aed7-c0e7f57a47ad.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/3396b31c-59b6-4e23-b790-2d79d638220e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 0.99,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/4e348fa1-4c16-42fe-a0a6-0215597aa1db.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 0.99,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/62cb44b1-7d2e-489e-ac30-93b6fc237bf6.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.13,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/7be782c9-c49f-4bda-93f2-c247c318f631.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/8a03b61b-a76b-4105-b83a-6abc1f7c7411.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.2,
+          "js": 1.16,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/926c782f-7311-4126-873a-3cd0d1c20c0e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/9eb301b2-89fb-4c5c-830f-317745888076.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 0.99,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/9ee2625f-5db6-42d5-8eff-97bc4a545cb2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.02,
+          "js": 1.06,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/a8576a8d-a317-4dfd-a6b2-15456f7664a8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.05,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/b078c0e5-3848-4ad7-9690-e93e12ed6686.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.04,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/b5db7e36-80b4-4219-8905-26b9ab708681.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.2,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/ba2c0053-b9c4-47bb-ba9a-8570a158802f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.02,
+          "js": 1.06,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/cf427168-d653-496b-a4b6-0ab0407f4efd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.13,
+          "delta": 0.04,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.04
+    },
+    {
+      "filePath": "/files/d15dba8f-046e-495e-a365-221d4cacaef5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.1,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/00c3bfed-8063-4385-9b75-d0c64984396c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.47,
+          "js": 1.5,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.4.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.5.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/06f20d14-0502-4fb8-b9c8-6ad57d917011.6.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/0d8a3cc1-28a1-472e-82a6-b3a618df8df8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.17,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/12138745-869d-462e-bfbd-ac9bf90cb4d7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/124b5ca1-29d3-488b-8776-d80789254c2d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 0.97,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/196258eb-ac91-4d29-aeaf-f8752b6b15ab.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.78,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1be5eff7-db86-49de-b8e3-be69acf881b0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1db1c4d3-24f5-42a0-afca-8fb95e8a233c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.78,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2084152d-a95e-4d0e-9254-e0951f7aa519.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.42,
+          "js": 1.39,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2d390d22-8560-499f-a9c1-097f3f773166.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.33,
+          "js": 1.36,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2e83d134-6ba8-4fab-85ec-6d360d7247f0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.33,
+          "js": 1.36,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/30db3536-7501-4386-91df-13374766343a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.41,
+          "js": 1.44,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/3d6db482-831d-4bda-a173-517d583a7d58.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.37,
+          "js": 1.4,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/3dd67440-3675-42a9-87c2-ada7fc4cd6e4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.4,
+          "js": 1.43,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/5b62f18b-b91a-4d12-8bd3-c15c7cbf0a66.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.19,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/63973666-b0c0-4b84-934a-e7d929dcdc96.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.2,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/644fdb30-04d0-4c54-915e-7c44e608821f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/6b00bee1-fe34-492a-b096-d7cdc39ade4f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/6d0dc6d1-8fa9-45d4-9277-e85cbb5ff1aa.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.46,
+          "js": 1.49,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7b56e437-3369-4d56-81ac-2c2ac87637f9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7b56e437-3369-4d56-81ac-2c2ac87637f9.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7b56e437-3369-4d56-81ac-2c2ac87637f9.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7ca1833f-0e0c-4d84-8faa-bf7072f3a73d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.78,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/8b124bf2-7c80-4a9b-88cb-38130185a61a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.4,
+          "js": 1.43,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/8c521c1e-b877-4156-a091-98108a22d715.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.04,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/92bc7057-b239-48f0-a028-6e30b06ca480.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.17,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/931a290b-9bb7-4e9e-8f8d-1e286fef523f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.2,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/93789d60-8d03-4aa3-b064-961261a77067.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/93e9d53f-7fd4-4d95-b6b3-5e9d18a74e03.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.37,
+          "js": 1.4,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/94541594-ef84-460c-827a-3e75b9a90b71.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/94541594-ef84-460c-827a-3e75b9a90b71.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/974c0257-fa9b-40c0-ae17-41895431abcf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.45,
+          "js": 1.42,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9a1b6f62-04fe-4cc3-90fa-e3ad863eb281.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.34,
+          "js": 1.37,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9df76866-ecc2-4a3b-a5a2-0eb796bad716.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.13,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/a1a27dc4-5e0b-4629-a079-fb00fc8e9bb4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.11,
+          "js": 1.08,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/a6d551ce-cf75-46fb-9aa4-c70e1a98b626.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/a9c08990-254e-4c50-8844-c894a518fef0.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.26,
+          "js": 1.23,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/af1b7562-90af-4388-b7db-51c6fd8b8d2a.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/af1b7562-90af-4388-b7db-51c6fd8b8d2a.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/af1b7562-90af-4388-b7db-51c6fd8b8d2a.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/b099f466-6092-43d3-8314-697b0d175d40.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.2,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/b971da45-5687-4d94-a1fa-1a5f832598d7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.32,
+          "js": 1.35,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/ba1dfeb3-6b9c-47de-87ac-e0ff41dd6d2f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.45,
+          "js": 1.42,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d15c34a6-d7c4-4d8e-be42-42b66f0e5bf3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.17,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d42c8ab1-b186-4f14-9413-af73e57980d3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d524857f-ab69-42d8-b6a9-e000bde42535.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.37,
+          "js": 1.4,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d6131f05-a730-4cd8-86d3-49b8b7e07ed3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d6131f05-a730-4cd8-86d3-49b8b7e07ed3.1.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d6131f05-a730-4cd8-86d3-49b8b7e07ed3.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/d6131f05-a730-4cd8-86d3-49b8b7e07ed3.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/dc410ba6-07ea-4fdb-add4-5082b2e70824.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.75,
+          "js": 0.78,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/dcb39f52-7477-4344-b767-a09fd183dbe7.2.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.2,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/dcb39f52-7477-4344-b767-a09fd183dbe7.3.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.17,
+          "js": 1.2,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/e1e2d1c4-acee-4963-a490-7fda903ce721.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.35,
+          "js": 1.38,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/e8930d75-176d-4449-b1f5-6cb81651e5ca.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/e96dc30a-2958-4b4e-a84e-7492696b87a2.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.47,
+          "js": 1.5,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f2be1528-5eda-47c6-8f9e-6e3bd2806784.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.19,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f4d27cb1-d623-48b4-8081-ec5e5371d03a.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.08,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f99a436e-29c8-40be-b86a-002376e3615c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.31,
+          "js": 1.34,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2e77124e-0bc3-4315-a629-26f9a3db6d4d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.87,
+          "js": 0.9,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/4c02c6f0-88aa-4d35-90b9-eaaf455f4767.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.96,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/6fddebde-6f7d-4346-ace3-46c1ed032de5.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.92,
+          "js": 0.95,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/916b82d3-0946-4e5c-81e1-f58d1d1be74e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.96,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9bfd47e7-37d1-4be1-98c8-ba68972fa4a1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.92,
+          "js": 0.95,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f14c12ed-6487-4d67-b4fa-a98db9e21612.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.96,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f8e08d65-7469-46ed-bac6-dbe8b5de7a95.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.96,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/6d63bf64-6844-4b7a-99b6-d5f98938e7dc.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.41,
+          "js": 1.44,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/fcf739bc-0d3f-495a-a9b9-62604afb5bf9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.21,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/0654225c-a76c-45d8-b012-f690659206b7.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1.06,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1dec65de-c884-4e5a-9302-6939c1e0f042.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.89,
+          "js": 0.92,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2adeab31-a327-4771-ba36-658299bfe3a8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.79,
+          "js": 0.82,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/2c95555b-5a61-454a-9741-b55eb84ede3b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.69,
+          "js": 0.72,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/455f0def-dea1-44fd-bccc-86a75d35dfdd.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/55e7495a-b068-402b-911b-d59c5c5ca01c.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.18,
+          "js": 1.21,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/6f995b6e-4ead-42c0-8e48-9aafda857bd1.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.67,
+          "js": 0.7,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/739f005e-a13c-4986-930e-1b05c9dbc269.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.3,
+          "js": 1.33,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/89d3b45e-0465-42e6-abce-aeeea1c8135b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.65,
+          "js": 0.68,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/8c1a61c0-1e48-4130-8f8c-4e0391dc92b9.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.72,
+          "js": 0.75,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/8d5a8d5f-8d74-46c5-80b0-7305bfd5aef8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.08,
+          "js": 1.11,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/99638010-494a-432d-8187-437db8631acf.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.67,
+          "js": 0.7,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9ea91083-680b-4d67-968d-f8a7335bfb01.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.69,
+          "js": 0.72,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/a0fc1036-d871-4792-94af-9e461ebe9909.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.04,
+          "js": 1.07,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/e37cac1d-65b4-4d44-9d82-b6ce9a4ce74e.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.19,
+          "js": 1.22,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/fd4f7dce-1dc5-4d6f-acaa-3a83a41d7672.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.13,
+          "js": 1.16,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/36cf7c23-cf7e-40ac-9990-958627da4307.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.03,
+          "js": 1,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7613a36b-a6f6-4b97-a3f8-be3bc0b5c877.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 0.97,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/a2b7fca5-5cc6-4fb0-ad1a-8ff1e9447570.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 0.97,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/043eb68d-2066-44fa-815d-52f57916e476.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/0498d8ca-995c-4424-b799-f0850cc77731.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.95,
+          "js": 0.98,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/069a387e-6abb-41ae-9183-ef1bf29f2377.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.1,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/0b4fa7eb-bf92-4abd-b1b7-eecb6197acb8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.96,
+          "js": 0.99,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1065964c-9d2a-4912-b352-3a6b0026124f.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1887bce0-3b3d-4383-b056-de93ade86ebe.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.96,
+          "js": 0.99,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/1cf92462-84fa-4539-b34b-7477d3e09cb3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.16,
+          "js": 1.19,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/25f03ca3-afb6-4c66-aa1b-0aeda52f83fb.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.96,
+          "js": 0.99,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/3cc47bec-99ca-4292-b67e-f1d2e8a32a21.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/3d0c40d5-7cce-4488-80c1-e2c4e98e9029.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.13,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/46c8c8ff-f4bf-4e78-818f-580a0e005305.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.04,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/4e3e5b1d-b04e-4927-a654-b28e5d3694b4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/7f86dac5-67eb-4b79-8d83-e1b759015de8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 0.97,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/8746e0de-08b2-4667-908e-752384ef6549.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.1,
+          "js": 1.13,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/92e9e471-49a3-471c-adcb-eb216b2e8d7b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.07,
+          "js": 1.1,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9ca1c300-21f3-481d-a680-d9aa364e79c4.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9f99d079-7474-41b1-8d12-e6d5d752ebb3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/9fd35455-aa3c-4e60-8cc2-9133cadcd530.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.02,
+          "js": 1.05,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/ab4303c4-f1f9-419b-afb9-8e14927d6ba8.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.97,
+          "js": 1,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/aff7b3dd-042d-4322-9da5-b9e07ab3a9da.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/b210281e-8bd9-42a0-94a5-617df2121138.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.06,
+          "js": 1.09,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/bb077009-a656-4625-9fca-8daeba0cff67.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.14,
+          "js": 1.17,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/c0d55340-bcbd-49d9-a34e-7e40d1156f3b.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.05,
+          "js": 1.08,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/c15cd309-1926-45d3-b5f1-801420db1897.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 0.93,
+          "js": 0.96,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/c3ad7e54-ed4f-4ba3-afec-ebdb05afaef3.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/c8906d43-2c9e-4113-99e4-580c36b0f3de.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/db1a227f-7a8a-4520-9625-a9b3733d6761.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.01,
+          "js": 1.04,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/e943fb3c-9a05-46c4-966f-fadc16cb3775.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/ecfdca0f-5c5f-4926-a53d-b7dcfe7d039d.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f1e1840e-8a75-49a4-b054-505eee100b24.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1.09,
+          "js": 1.12,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    },
+    {
+      "filePath": "/files/f9eb3f9a-9403-4dae-bac5-4d5ef0733d44.0.json",
+      "fields": [
+        {
+          "field": "ratio",
+          "swift": 1,
+          "js": 1.03,
+          "delta": 0.03,
+          "threshold": 0.021
+        }
+      ],
+      "maxDelta": 0.03
+    }
+  ]
+}

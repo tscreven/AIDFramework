@@ -1,7 +1,7 @@
 # Build artifacts
 .build/
 DerivedData/
-state/
+
 ExampleInputs/
 __pycache__/ 
 
@@ -30,3 +30,7 @@ MealScenarios/
 
 # Miscellaneous 
 otherOrefAlgs/
+
+# datafiles
+iobBugInvoke
+autosensBugInvoke
