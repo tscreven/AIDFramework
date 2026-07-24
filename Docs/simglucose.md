@@ -59,7 +59,7 @@ python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen
     * `js`: Javascript implementation of bug-free Swift oref algorithm.
     * `swift`: Swift implementation of oref algorithm.
 * `days`: Number of days simulation runs (must be whole number)
-* `meal_scenario_pat`h`: Optional argument. Filepath to precomputed .npy file containing meal scenario.
+* `meal_scenario_path`: Optional argument. Filepath to precomputed .npy file containing meal scenario.
 * `results_file`: Filepath to .csv file where outputs will be written to.
 
 ## Trio Oref Algorithm Integration in simglucose

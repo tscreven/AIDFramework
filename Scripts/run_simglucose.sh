@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-readonly PARALLELISM=10
+readonly PARALLELISM=1
 swift build -c release
 
 run_user() {
