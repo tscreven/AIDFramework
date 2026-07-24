@@ -34,3 +34,6 @@ otherOrefAlgs/
 # datafiles
 iobBugInvoke
 autosensBugInvoke
+
+# Trio Oref CLI state
+state/
