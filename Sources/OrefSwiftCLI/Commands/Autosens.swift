@@ -74,9 +74,6 @@ struct AutosensCommand: ParsableCommand {
     @Flag(name: .long, help: "Replay mode: do not write command outputs to files") var replay: Bool = false
     @Flag(name: .long, help: "Run JavaScript autosens implementation instead of Swift") var js: Bool = false
     @Flag(name: .long, help: "Run buggy JavaScript autosens implementation instead of Swift") var jsbug: Bool = false
-    @Flag(name: .long, help: "Run IOB fixed buggy JavaScript autosens implementation instead of Swift") var jsiobfix: Bool = false
-    @Flag(name: .long, help: "Run IOB and Autosens fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_fix: Bool = false
-    @Flag(name: .long, help: "Run IOB, Autosens, and determine basal fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_db_fix: Bool = false
 
     func run() throws {
         // Read input
@@ -88,13 +85,12 @@ struct AutosensCommand: ParsableCommand {
             inputData = FileHandle.standardInput.readDataToEndOfFile()
         }
 
-        let runningJS: Bool = js || jsbug || jsiobfix || jsiob_as_fix || jsiob_as_db_fix
-        if runningJS {
+        if js || jsbug {
             guard let inputJSONString = String(data: inputData, encoding: .utf8) else {
                 throw JSErrors.invalidUTF8Input
             }
 
-            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+            let source: String = try loadSourceAlgorithm(js, jsbug)
             let jsResultJSONString = try JavaScriptCommandRunner(lib: source).runAutosens(inputJSON: inputJSONString)
             let jsData = Data(jsResultJSONString.utf8)
 

@@ -71,15 +71,8 @@ struct Calculate: ParsableCommand {
 
     @Option(name: .shortAndLong, help: "Output file path (use '-' for STDOUT)") var output: String?
     @Flag(name: .long, help: "Print per-step timing to stderr") var timing: Bool = false
-    @Flag(
-        name: [.long, .customLong("replay", withSingleDash: true)],
-        help: "Replay mode: do not write command outputs to files"
-    ) var replay: Bool = false
     @Flag(name: .long, help: "Run JavaScript autosens implementation instead of Swift") var js: Bool = false
     @Flag(name: .long, help: "Run buggy JavaScript autosens implementation instead of Swift") var jsbug: Bool = false
-    @Flag(name: .long, help: "Run IOB fixed buggy JavaScript autosens implementation instead of Swift") var jsiobfix: Bool = false
-    @Flag(name: .long, help: "Run IOB and Autosens fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_fix: Bool = false
-    @Flag(name: .long, help: "Run IOB, Autosens, and determine basal fixed buggy JavaScript oref algorithms instead of Swift") var jsiob_as_db_fix: Bool = false
     @Flag(name: .long, help: "Encode autosens JS input dates as Unix seconds (triggers dateString bucket-collapse bug in autosens.js). Default is ISO8601.") var autosensSeconds: Bool = false
 
     func run() throws {
@@ -91,9 +84,8 @@ struct Calculate: ParsableCommand {
         var jsAutosensOutput: String?
         var jsRunner: JavaScriptCommandRunner?
 
-        let runningJS: Bool = js || jsbug || jsiobfix || jsiob_as_fix || jsiob_as_db_fix
-        if runningJS {
-            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+        if js || jsbug {
+            let source: String = try loadSourceAlgorithm(js, jsbug)
             jsRunner = try JavaScriptCommandRunner(lib: source)
         }
 
@@ -148,9 +140,7 @@ struct Calculate: ParsableCommand {
 
         // 2. Store glucose
         stepStart = DispatchTime.now()
-        if !replay {
-            try storage.storeGlucose(at: now, glucose: calcInput.glucose)
-        }
+        try storage.storeGlucose(at: now, glucose: calcInput.glucose)
         mark("storeGlucose", since: stepStart)
 
         // 3. Regenerate profile
@@ -170,9 +160,7 @@ struct Calculate: ParsableCommand {
             model: model,
             clock: now
         )
-        if !replay {
-            try storage.saveProfile(profile)
-        }
+        try storage.saveProfile(profile)
         mark("makeProfile", since: stepStart)
 
         // 4. Fetch data
@@ -181,7 +169,6 @@ struct Calculate: ParsableCommand {
             from: storage.fetchGlucose(at: now),
             currentGlucose: calcInput.glucose,
             at: now,
-            replay: replay
         )
         let pumpEventRecords = storage.loadPumpEventRecords()
         let pumpHistory = storage.fetchPumpEvents(at: now, from: pumpEventRecords)
@@ -196,18 +183,7 @@ struct Calculate: ParsableCommand {
 
         stepStart = DispatchTime.now()
         let tddRecords: [TDDRecord]
-        if replay {
-            let tddPath = URL(fileURLWithPath: "\(stateDir)/tdd.json")
-            if let data = try? Data(contentsOf: tddPath),
-               let records = try? JSONCoding.decoder.decode([TDDRecord].self, from: data)
-            {
-                tddRecords = Self.filteredReplayTDDRecords(records, at: now)
-            } else {
-                tddRecords = []
-            }
-        } else {
-            tddRecords = try storage.storeTDD(at: now, total: currentTDD)
-        }
+        tddRecords = try storage.storeTDD(at: now, total: currentTDD)
         mark("tdd.store", since: stepStart)
 
         stepStart = DispatchTime.now()
@@ -240,12 +216,8 @@ struct Calculate: ParsableCommand {
         // 6. Autosens check — recalculate if stale (>30 min) or missing, and enough data
         stepStart = DispatchTime.now()
         var autosens = try storage.loadAutosens()
-        let autosensAge: TimeInterval
-        if replay, let autosensTimestamp = autosens.timestamp, autosensTimestamp > now {
-            autosens = Autosens(ratio: 1)
-            autosensAge = .infinity
-            appendLog("autosens-dbg: replay+future-ts override → ratio forced to 1 clock=\(now)")
-        } else if let autosensTimestamp = autosens.timestamp {
+        let autosensAge: TimeInterval    
+        if let autosensTimestamp = autosens.timestamp {
             autosensAge = now.timeIntervalSince(autosensTimestamp)
         } else {
             autosensAge = .infinity
@@ -312,9 +284,7 @@ struct Calculate: ParsableCommand {
                 }
             }
             autosens.timestamp = now
-            if !replay {
-                try storage.saveAutosens(autosens)
-            }
+            try storage.saveAutosens(autosens)
         }
         mark("autosens", since: stepStart)
 
@@ -406,7 +376,7 @@ struct Calculate: ParsableCommand {
         do {
             guard let meal = mealData else {
                 outputData = "null".data(using: .utf8)!
-                return writeOutput(outputData, replayActive: replay)
+                return writeOutput(outputData)
             }
 
             if let jsRunner {
@@ -471,7 +441,7 @@ struct Calculate: ParsableCommand {
         // Per-step determine-basal log
         if let det = determinationForStorage {
             let sensRatio = det.sensitivityRatio ?? autosens.ratio
-            let mode = jsbug ? "jsbug" : (js ? "js" : (jsiobfix ? "jsiobfix" : (jsiob_as_fix ? "jsiob_as_fix" : (jsiob_as_db_fix ? "jsiob_as_db_fix" : "swift"))))
+            let mode = jsbug ? "jsbug" : (js ? "js" : "swift")
             appendLog("determine-basal: mode=\(mode) sensitivityRatio=\(sensRatio) autosens.ratio=\(autosens.ratio) dynamicISF=\(preferences.useNewFormula) sufficientTDD=\(sufficientTDD) clock=\(now)")
             let iobCurrent = iobData.first?.iob ?? 0
             let rateStr = det.rate.map { "\($0)" } ?? "nil"
@@ -484,7 +454,7 @@ struct Calculate: ParsableCommand {
         }
 
         // 11. Store pump events
-        if !replay, let determination = determinationForStorage {
+        if let determination = determinationForStorage {
             if determination.rate != nil, let duration = determination.duration {
                 try storage.storeTempBasal(at: now, rate: determination.rate!, duration: Int(truncating: duration as NSDecimalNumber))
             }
@@ -496,37 +466,36 @@ struct Calculate: ParsableCommand {
 
         // 12. Save determination to determinations directory
         stepStart = DispatchTime.now()
-        if !replay {
-            let determinationsDir = "\(stateDir)/determinations"
-            try FileManager.default.createDirectory(atPath: determinationsDir, withIntermediateDirectories: true)
-            let timestampFormatter = ISO8601DateFormatter()
-            timestampFormatter.formatOptions = [.withInternetDateTime]
-            timestampFormatter.timeZone = TimeZone.current
-            let timestampString = timestampFormatter.string(from: now)
-            try outputData.write(to: URL(fileURLWithPath: "\(determinationsDir)/\(timestampString).json"))
 
-            if runningJS {
-                let jsDir: String = "\(stateDir)/js_comparisons/\(timestampString)"
-                try FileManager.default.createDirectory(atPath: jsDir, withIntermediateDirectories: true)
-                if let jsIobOutput {
-                    try Data(jsIobOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_iob.json"))
-                }
-                if let jsMealOutput {
-                    try Data(jsMealOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_meal.json"))
-                }
-                if let jsDetermineBasalOutput {
-                    try Data(jsDetermineBasalOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_determine_basal.json"))
-                }
-                if let jsAutosensOutput {
-                    try Data(jsAutosensOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_autosens.json"))
-                }
+        let determinationsDir = "\(stateDir)/determinations"
+        try FileManager.default.createDirectory(atPath: determinationsDir, withIntermediateDirectories: true)
+        let timestampFormatter = ISO8601DateFormatter()
+        timestampFormatter.formatOptions = [.withInternetDateTime]
+        timestampFormatter.timeZone = TimeZone.current
+        let timestampString = timestampFormatter.string(from: now)
+        try outputData.write(to: URL(fileURLWithPath: "\(determinationsDir)/\(timestampString).json"))
+
+        if js || jsbug {
+            let jsDir: String = "\(stateDir)/js_comparisons/\(timestampString)"
+            try FileManager.default.createDirectory(atPath: jsDir, withIntermediateDirectories: true)
+            if let jsIobOutput {
+                try Data(jsIobOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_iob.json"))
+            }
+            if let jsMealOutput {
+                try Data(jsMealOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_meal.json"))
+            }
+            if let jsDetermineBasalOutput {
+                try Data(jsDetermineBasalOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_determine_basal.json"))
+            }
+            if let jsAutosensOutput {
+                try Data(jsAutosensOutput.utf8).write(to: URL(fileURLWithPath: "\(jsDir)/js_autosens.json"))
             }
         }
 
         mark("saveState", since: stepStart)
 
         // 13. Output
-        writeOutput(outputData, replayActive: replay)
+        writeOutput(outputData)
 
         // Print timing summary to stderr if --timing flag is set
         if timing {
@@ -540,9 +509,8 @@ struct Calculate: ParsableCommand {
         }
     }
 
-    private func writeOutput(_ data: Data, replayActive: Bool) {
+    private func writeOutput(_ data: Data) {
         if let outputPath = output, outputPath != "-" {
-            if replayActive { return }
             try? data.write(to: URL(fileURLWithPath: outputPath))
         } else {
             if let outputString = String(data: data, encoding: .utf8) {
@@ -571,9 +539,7 @@ struct Calculate: ParsableCommand {
         from storedHistory: [BloodGlucose],
         currentGlucose: Decimal,
         at timestamp: Date,
-        replay: Bool
     ) -> [BloodGlucose] {
-        guard replay else { return storedHistory }
         guard storedHistory.first?.dateString != timestamp else { return storedHistory }
 
         let currentSgv = NSDecimalNumber(decimal: currentGlucose).intValue
@@ -591,22 +557,5 @@ struct Calculate: ParsableCommand {
         )
 
         return [currentReading] + storedHistory
-    }
-
-    static func filteredReplayTDDRecords(_ records: [TDDRecord], at timestamp: Date) -> [TDDRecord] {
-        records.filter { $0.timestamp <= timestamp }
-    }
-
-    static func parseInspectFrom(_ value: String?) throws -> Date? {
-        guard let value else { return nil }
-        if let timestamp = Double(value) {
-            return Date(timeIntervalSince1970: timestamp)
-        }
-        if let date = Formatter.iso8601withFractionalSeconds.date(from: value) ??
-            Formatter.iso8601.date(from: value)
-        {
-            return date
-        }
-        throw ValidationError("Invalid --inspect-from value '\(value)'. Use Unix seconds or ISO8601.")
     }
 }
