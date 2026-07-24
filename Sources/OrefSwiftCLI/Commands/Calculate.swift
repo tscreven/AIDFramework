@@ -558,21 +558,4 @@ struct Calculate: ParsableCommand {
 
         return [currentReading] + storedHistory
     }
-
-    static func filteredReplayTDDRecords(_ records: [TDDRecord], at timestamp: Date) -> [TDDRecord] {
-        records.filter { $0.timestamp <= timestamp }
-    }
-
-    static func parseInspectFrom(_ value: String?) throws -> Date? {
-        guard let value else { return nil }
-        if let timestamp = Double(value) {
-            return Date(timeIntervalSince1970: timestamp)
-        }
-        if let date = Formatter.iso8601withFractionalSeconds.date(from: value) ??
-            Formatter.iso8601.date(from: value)
-        {
-            return date
-        }
-        throw ValidationError("Invalid --inspect-from value '\(value)'. Use Unix seconds or ISO8601.")
-    }
 }
