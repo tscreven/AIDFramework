@@ -53,6 +53,9 @@ class TrioOrefController(Controller):
 
         input_data = json.dumps({"timestamp": timestamp, "glucose": glucose})
         result = subprocess.run(cmd, input=input_data, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"Error calculating: {result.stderr}", file=sys.stderr)
+            sys.exit(1)
 
         return json.loads(result.stdout)
 

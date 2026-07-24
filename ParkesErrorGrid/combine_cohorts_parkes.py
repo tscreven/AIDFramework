@@ -1,4 +1,4 @@
-from ParkesErrorGrid.parkes_error import ParkesError
+from parkes_error import ParkesError
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -14,14 +14,14 @@ adult_traces_b = []
 
 for user in users:
     if user[:5] == "child":
-        child_traces_f += pd.read_csv(f"simglucoseResults/{user}/fixed_hourScen.csv")["CGM"].to_list()
-        child_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug_hourScen.csv")["CGM"].to_list()
+        child_traces_f += pd.read_csv(f"simglucoseResults/{user}/swift.csv")["CGM"].to_list()
+        child_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug.csv")["CGM"].to_list()
     elif user[:10] == "adolescent":
-        adolescent_traces_f += pd.read_csv(f"simglucoseResults/{user}/fixed_hourScen.csv")["CGM"].to_list()
-        adolescent_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug_hourScen.csv")["CGM"].to_list()
+        adolescent_traces_f += pd.read_csv(f"simglucoseResults/{user}/swift.csv")["CGM"].to_list()
+        adolescent_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug.csv")["CGM"].to_list()
     else:
-        adult_traces_f += pd.read_csv(f"simglucoseResults/{user}/fixed_hourScen.csv")["CGM"].to_list()
-        adult_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug_hourScen.csv")["CGM"].to_list()
+        adult_traces_f += pd.read_csv(f"simglucoseResults/{user}/swift.csv")["CGM"].to_list()
+        adult_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug.csv")["CGM"].to_list()
 
 
 pe_c = ParkesError(child_traces_f, child_traces_b)
@@ -57,4 +57,4 @@ for ax, file in zip(axes.flat, files):
     ax.set_position([0, 0, 1, 1])
 
 plt.subplots_adjust(wspace=0, hspace=0)
-plt.savefig("simglucoseResults/combined.png", dpi=300, bbox_inches="tight", pad_inches=0)
+plt.savefig("simglucoseResults/combined_parkes.png", dpi=300, bbox_inches="tight", pad_inches=0)
