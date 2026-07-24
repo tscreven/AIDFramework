@@ -240,8 +240,6 @@ struct Calculate: ParsableCommand {
         // 6. Autosens check — recalculate if stale (>30 min) or missing, and enough data
         stepStart = DispatchTime.now()
         var autosens = try storage.loadAutosens()
-        let storedAutosensRatio = autosens.ratio
-        let storedAutosensTimestamp = autosens.timestamp
         let autosensAge: TimeInterval
         if replay, let autosensTimestamp = autosens.timestamp, autosensTimestamp > now {
             autosens = Autosens(ratio: 1)
@@ -252,9 +250,6 @@ struct Calculate: ParsableCommand {
         } else {
             autosensAge = .infinity
         }
-
-        let autosensAgeMin = autosensAge.isInfinite ? Double.infinity : autosensAge / 60.0
-        let willRecalc = autosensAge > 30 * 60 && glucoseHistory.count >= 72
 
         if autosensAge > 30 * 60, glucoseHistory.count >= 72 {
             if let jsRunner {
