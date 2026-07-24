@@ -30,20 +30,14 @@ public enum JSErrors: Error, CustomStringConvertible {
     }
 }
 
-public func loadSourceAlgorithm(_ js: Bool, _ jsBug: Bool, _ jsIobFix: Bool, _ jsIobAutosensFix: Bool, _ jsIobAutosensDetBasalFix: Bool) throws -> String {
+public func loadSourceAlgorithm(_ js: Bool, _ jsBug: Bool) throws -> String {
     if js {
         return "Sources/OrefJSAlgorithm"
     }
     if jsBug {
         return "Sources/BuggyOrefJSAlgorithm"
     }
-    else if jsIobFix {
-        return "Sources/IOBFixedJSAlgorithm"
-    }
-    else if jsIobAutosensFix {
-        return "Sources/IOB+Autosens_FixedJSAlgorithm"
-    }
-    return "Sources/IOB+Autosens+DetBasal_FixedJSAlgorithm"
+    throw JSErrors.couldNotLocateJSLib
 }
 
 /// Run JavaScript oref version of all commands. Each command runs through a

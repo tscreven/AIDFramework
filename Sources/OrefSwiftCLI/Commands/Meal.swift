@@ -84,13 +84,12 @@ struct Meal: ParsableCommand {
             inputData = FileHandle.standardInput.readDataToEndOfFile()
         }
 
-        let runningJS: Bool = js || jsbug || jsiobfix || jsiob_as_fix || jsiob_as_db_fix
-        if runningJS {
+        if js || jsbug {
             guard let inputJSONString = String(data: inputData, encoding: .utf8) else {
                 throw JSErrors.invalidUTF8Input
             }
 
-            let source: String = try loadSourceAlgorithm(js, jsbug, jsiobfix, jsiob_as_fix, jsiob_as_db_fix)
+            let source: String = try loadSourceAlgorithm(js, jsbug)
             let jsResultJSONString = try JavaScriptCommandRunner(lib: source).runMeal(inputJSON: inputJSONString)
             let jsData = Data(jsResultJSONString.utf8)
 

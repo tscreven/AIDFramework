@@ -4,7 +4,6 @@ import argparse
 import csv
 import json
 import math
-import re
 import subprocess
 import sys
 import time
@@ -41,9 +40,6 @@ def parse_args():
     parser.add_argument("--timing", action="store_true", help="Print per-step timing to stderr")
     parser.add_argument("--js", action="store_true", help="Run JavaScript algorithm instead of Swift algorithm.")
     parser.add_argument("--jsbug", action="store_true", help="Run buggy JavaScript algorithm instead of Swift algorithm.")
-    parser.add_argument("--jsiobfix", action="store_true", help="Run IOB fixed buggy JavaScript algorithm instead of Swift algorithm.")
-    parser.add_argument("--jsiob_as_fix", action="store_true", help="Run IOB and Autosens fixed buggy JavaScript algorithm instead of Swift algorithm.")
-    parser.add_argument("--jsiob_as_db_fix", action="store_true", help="Run IOB, Autosens, and determine basal fixed buggy JavaScript algorithm instead of Swift algorithm.")
     parser.add_argument("--autosensSeconds", action="store_true", help="Pass --autosensSeconds to oref-swift calculate (encode JS autosens input dates as Unix seconds).")
 
     args = parser.parse_args()
@@ -453,12 +449,6 @@ def main():
         js_alg = "--js"
     elif args.jsbug:
         js_alg = "--jsbug"
-    elif args.jsiobfix:
-        js_alg = "--jsiobfix"
-    elif args.jsiob_as_fix:
-        js_alg = "--jsiob_as_fix"
-    elif args.jsiob_as_db_fix:
-        js_alg = "--jsiob_as_db_fix"
 
     if args.a is not None:
         # Replay added glucose trace
