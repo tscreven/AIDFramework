@@ -21,7 +21,8 @@ class ParkesError():
     def _below_line(self, x_1, y_1, x_2, y_2, x_gluc, y_gluc):
         return not self._above_line(x_1, y_1, x_2, y_2, x_gluc, y_gluc)
 
-    def _classify_point(self, x_gluc, y_gluc):
+    def _classify_point(self, x_gluc, y_gluc) -> int:
+        '''For given glucose pair, return integer reflecting the zone the paired point is displayed in.'''
 
         if x_gluc < 0 or x_gluc > 550 or y_gluc < 0 or y_gluc > 550:
             raise Exception(f"Invalid glucose pair: ({x_gluc}, {y_gluc}). Glucose values must be in [0, 550]")
@@ -67,16 +68,18 @@ class ParkesError():
         # Zone A
         return 0
     
-    def _classify_points(self):
+    def _classify_points(self) -> list:
         return [self._classify_point(gx, gy) for gx, gy in zip(self.x_trace, self.y_trace)]
     
-    def zone_count(self):
+    def zone_count(self) -> dict:
+        '''Return dictionary of the number of points in each zone.'''
         count = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0}
         for zone in self.zones:
             count[zone] += 1
-        return count
+        return {'A': count[0], 'B': count[3]+count[4], 'C': count[2]+count[5], 
+                'D': count[1]+count[6], 'E': count[7]}
     
-    def plot(self, title, x_axis, y_axis, size=2, save_fig_path="", ax=None):
+    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=None, ax=None):
 
         if ax is None:
             plt.figure(dpi=600)
@@ -88,14 +91,6 @@ class ParkesError():
         ax.set_ylabel(y_axis)
         ax.set_xlim((0, 400))
         ax.set_ylim((0, 400))
-
-        '''e_points = [[0,150],[35,155],[50,550]]
-        ud_points = [[0,100],[25,100],[50,125],[80,215],[125,550]]
-        ld_points = [[250,0],[250,40],[550,150]]
-        uc_points = [[0,60],[30,60],[50,80],[70,110],[260,550]]
-        lc_points = [[120,0],[120,30],[260,130],[550,250]]
-        ub_points = [[0,50],[30,50],[140,170],[280,380],[430,550]]
-        lb_points = [[50,0],[50,30],[170,145],[385,300],[550,450]]'''
 
         e_points = [[0,150],[35,155],[50,400]]
         ud_points = [[0,100],[25,100],[50,125],[80,215],[125,400]]
@@ -138,7 +133,10 @@ class ParkesError():
 
         ax.legend(loc="upper left", fontsize=9, markerscale=2)
 
-        if len(save_fig_path) > 0:
-            ax.get_figure().savefig(save_fig_path)
+        if save_fig_path:
+            fig = ax.get_figure(root=True)
+            if fig is None:
+                raise RuntimeError("Cannot save Parkes error plot without a Matplotlib figure.")
+            fig.savefig(save_fig_path)
 
         return ax
