@@ -38,3 +38,5 @@ echo "Autosens ratios seen (fixed, chronological):"
 grep "^autosens:" "$LOG" | sed 's/.*ratio=\([^ ]*\).*/\1/' | uniq
 
 echo ""
+
+python Scripts/plot_glucose.py 
