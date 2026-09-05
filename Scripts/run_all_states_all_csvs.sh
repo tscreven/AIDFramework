@@ -10,6 +10,10 @@ BUGTYPE="autosensBugInvoke"
 run_state() {
     local STATE_SNAPSHOT="$1"
     local SNAPSHOT_ID="${STATE_SNAPSHOT##*_}"
+    if [ ! -f "$STATE_SNAPSHOT/resumeTimestamp.txt" ]; then
+        echo "=== Skipping $SNAPSHOT_ID (no resumeTimestamp.txt) ===" >&2
+        return
+    fi
     local STATE_DIR="state/tmp_${SNAPSHOT_ID}"
     local RESUME_AT
     RESUME_AT="$(cat "$STATE_SNAPSHOT/resumeTimestamp.txt")"
