@@ -271,6 +271,24 @@ def lookup_isf(sensitivities, dt):
     return active["sensitivity"]
 
 
+def format_ratio(value):
+    """CSV cell for an optional ratio: blank when the algorithm did not report one."""
+    return "" if value is None else f"{float(value):.4f}"
+
+
+def load_autosens_ratio(state_dir):
+    """Read the autosens ratio the CLI persisted for this step.
+
+    oref-swift writes <state_dir>/autosens.json before it runs determineBasal,
+    so reading it after calculate() returns gives the ratio that step used.
+    """
+    try:
+        with open(f"{state_dir}/autosens.json") as f:
+            return json.load(f).get("ratio")
+    except (OSError, ValueError):
+        return None
+
+
 def calculate(state_dir, timestamp, glucose, run_js, use_timing=False, inspect_from=None, timezone=None, autosens_seconds=False):
     if run_js is None:
         cmd = [OREF_SWIFT_BINARY, "calculate", "-s", state_dir, "-i", "-", "-o", "-"]
@@ -439,7 +457,7 @@ def main():
     insulin_deliveries = []  # list of (datetime, units)
     pump_temp_basal = None
 
-    print("time,glucose,insulin,unfiltered glucose,total insulin action,insulin sensitivity factor,temp basal rate,duration")
+    print("time,glucose,insulin,unfiltered glucose,total insulin action,insulin sensitivity factor,temp basal rate,duration,autosens ratio,sensitivityRatio")
 
     filtered_glucose = None
     prev_t = None
@@ -561,7 +579,9 @@ def main():
             insulin_deliveries.append((t, five_min_insulin))
 
             duration = 0  if pump_temp_basal is None else pump_temp_basal['remaining_minutes']
-            print(f"{t.isoformat()},{glucose:.1f},{five_min_insulin:.4f},{prev_glucose},{insulin_action},{prev_isf},{active_rate},{duration}") 
+            autosens_ratio = format_ratio(load_autosens_ratio(state_dir))
+            sens_ratio = format_ratio(determination.get("sensitivityRatio"))
+            print(f"{t.isoformat()},{glucose:.1f},{five_min_insulin:.4f},{prev_glucose},{insulin_action},{prev_isf},{active_rate},{duration},{autosens_ratio},{sens_ratio}")
 
             if step < num_steps - 1:
                 if simulation_clock_start is not None:
@@ -616,7 +636,9 @@ def main():
             )
             insulin_deliveries.append((t, five_min_insulin))
 
-            print(f"{t.isoformat()},{glucose:.1f},{five_min_insulin:.4f}")
+            autosens_ratio = format_ratio(load_autosens_ratio(state_dir))
+            sens_ratio = format_ratio(determination.get("sensitivityRatio"))
+            print(f"{t.isoformat()},{glucose:.1f},{five_min_insulin:.4f},,,,,,{autosens_ratio},{sens_ratio}")
 
             t = t + timedelta(minutes=5)
 
