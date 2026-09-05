@@ -34,6 +34,8 @@ otherOrefAlgs/
 # datafiles
 iobBugInvoke
 autosensBugInvoke
+*.zip
+added_glucose/
 
 # Trio Oref CLI state
 state/
