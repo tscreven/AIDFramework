@@ -1,72 +1,82 @@
-# Run Trio Oref Algorithm in Simulator
+# simglucose
 
-This file provides instructions on how to simulate the Trio oref algorithm through `simglucose` on virtual patients, explains how Trio's oref algorithm is looped into the simulator's controller policy, and explains changes/additions to the `simglucose` codebase.
+This document provides instructions for simulating the Trio oref algorithm in `simglucose` on pre-loaded virtual persons and explains how Trio's oref algorithm is looped into the simulator's controller policy.
 
 ## Outline
-1. Simualation Instructions and Commands
+1. Simulation Instructions and Commands
     * [Create meal scenario](#create-meal-scenario)
     * [Run simulator](#run-simulator)
 2. [Oref Algorithm Integration Explanation](#trio-oref-algorithm-integration-in-simglucose)
 
 ## Commands
 
-Commands assume they're executed from root of project.
-
 ### Create Meal Scenario
-You do not have to pre-compute a meal scenario to runthe  simulator. However, if a meal scenario is not given to simulator runner, it will randomly generate one. Create and input a meal scenario for reproducability.
+Inputting a meal scenario is not required to run the simulator. However, if a meal scenario is not given, the simulation executor will randomly generate one. Inputting a meal scenario allows for results to be reproduced.
 
 **Manually create meal scenario:** 
 
-The scenario is expected as a `numpy` matrix of size (N, 2) where N = number of meals in the scenario. First column is the number of simulation steps since the simulation started. Another way to think about it is the number of CGM readings since the simulation started; there is one cgm reading for every simualtion step.
+The scenario is expected as a 2D `NumPy` matrix of shape (N, 2) where N = number of meals in the scenario. First column is the number of simulation steps since the simulation started: number of CGM readings since the simulation started. There is one CGM reading every simulation step.
 
-The step index the step count since the first step in the simulation, meaning a meal at the first simulation step occurs at reading number zero. For example, a meal at the 12th step means a meal one hour into the simulation. The second column is the carbohydrate amount. For example, a row of [355, 20] means 20 grams of carbohydrates were consumed at the 356th CGM reading (zero-based indexing). Meal scenario files need to be saved as a .npy file.
+The step index is the number of steps since the start of the simulation, which means a meal at the first simulation step occurs at reading number zero. For example, a meal at the 12th step means a meal one hour into the simulation. The second column is the carbohydrate amount. For example, a row of [355, 20] means 20 grams of carbohydrates were consumed at the 356th CGM reading (zero-based indexing). Meal scenario files should be saved as a `NumPy` file (.npy).
 
-**Programatically create meal scenario:**
+**Programmatically create meal scenario:**
 
-The follwing command invokes a Python script which generates a random meal scenario given certain constraints around the length of the scenario, the meal size, and meal timing.
+The following script generates a random meal scenario given certain constraints around the number of days in the scenario, meal size, and meal timing.
 
-```
-python3 simglucose/gen_meal_scenario.py -d <days> -ps <p_snack> -bk <breakfast> -ln <lunch> -dn <dinner> -sn <snack> -mr <meal_range> -fp <filepath>
-```
-* `days`: Number of days to create scenario for
-* `p_snack`: Optional argument. Probability of a snack occuring in a day. Valid values = [0,1]. Default value = 0.5.
-* `breakfast`: Optional argument. Mean breakfast carbohydrate amount. Default value = 60.
-* `lunch`: Optional argument. Mean lunch carbohydrate amount. Default value = 60.
-* `dinner`: Optional argument. Mean dinner carbohydrate amount. Default value = 50.
-* `snack`: Optional argument. Mean snack carbohydrate amount. Default value = 20.
-* `meal_range`: Optional argument. Percent allowed variation from mean carbohydrate amount in a meal. Valid values = [0,1]. Default value = 0.1.
-* `filepath`: Filepath to .npy file where scenario matrix will be saved.
+[gen_meal_scenario.py](../simglucose/gen_meal_scenario.py) creates a meal scenario with the following algorithm: 
+1. Each day, the virtual person eats breakfast, lunch, and dinner within +/- 30 minutes of the median meal time.
+    * Default median meal times: breakfast = 8:30, lunch = 13:00, dinner = 19:00.
+2. Within a meal range, each minute has an equal chance of being selected.
+3. Meal size is randomly selected between a minimum and maximum carbohydrate amount. $mealMedian$ = median carbohydrate amount for the meal. $mealRange$ = percent allowed variation from $mealMedian$; $mealRange$ = [0,1]. Minimum possible carbohydrate amount = $mealMedian$ - $mealRange$ * $mealMedian$. Maximum possible carbohydrate amount = $mealMedian$ + $mealRange$ * $mealMedian$.
+4. There is either 0 or 1 snacks in a day, which is determined by a preset probability. If a snack occurs, there is an equal chance of it happening at the midway point between breakfast and lunch, and lunch and dinner. Snack size is determined the same way as other meals.
 
 </br>
 
-[gen_meal_scenario.py](../simglucose/gen_meal_scenario.py) scenario rules: 
-1. Each day, virtual patient eats breakfast, lunch, and dinner within a range of times with the mean meal time +/- 30 minutes of range.
-    * Mean meal times: breakfast = 8:30, lunch = 13:00, dinner = 19:00. Change times in `generate_scenario()`.
-2. Within these meal ranges, each minute has an equal chance of being selected,
-3. Size of meal randomly selected from range. $mealMean$ = mean possible carbohydrate amount for a meal. $mealRange$ = percent allowed variation from $mealMean$ in range; $mealRange$ = [0,1]. Lowerbound of range = $mealMean$ - $mealRange$ * $mealMean$. Upperbound of range = $mealMean$ + $mealRange$ * $mealMean$.
-4. If a snack occurs, equal probability of it happening at the midway point between breakfast and lunch, and lunch and dinner. Size of snack determined same way as other meals.
+```
+python3 simglucose/gen_meal_scenario.py -d <days> -ps <p_snack> -bk <breakfast> -ln <lunch> -dn <dinner> -sn <snack> -mr <meal_range> -bkTime <breakfast_time> -lnTime <breakfast_time> -dbTime <dinner_time> -fp <filepath>
+```
+
+| Field | Description | Required | Default Value |
+| :-: | :-: | :-: | :-: |
+| days | Number of days in the scenario | Yes | N/A |
+| p_snack | Probability of a snack occurring in a day (between [0, 1]) | No | 0.5 |
+| breakfast | Median breakfast carbohydrate amount | No | 30 |
+| lunch | Median lunch carbohydrate amount | No | 60 |
+| dinner | Median dinner carbohydrate amount | No | 50 |
+| snack | Median breakfast carbohydrate amount | No | 20 |
+| meal_range | Maximum allowed percent difference from median carbohydrates for each meal (between [0, 1]) | No | 0.1 |
+| breakfast_time | Median breakfast time in possible scenario | No | 8:30 |
+| lunch_time | Median lunch time in possible scenario | No | 13:00 |
+| dinner_time | Median dinner time in possible scenario | No | 19:00 |
+| filepath | Filepath to .npy file where scenario matrix will be saved | No | "./scen.npy" |
+
 
 
 ### Run Simulator
-Run `simglucose` using the Trio oref [controller](../simglucose/simglucose/controller/trio_ctrller.py). 
+
 ```
 python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen <meal_scenario_path> -fn <results_file>
 ```
-* `virtual_patient`: Name of virtual patient. Valid patient names are age group followed by three digits. Age groups = [child, adolescent, adult]. Valid digits = [001, 002, 003, 004, 005, 006, 007, 008, 009, 010]
+
+* `virtual_patient`: Name of virtual person. Valid names are age group followed by three digits. Age groups = [child, adolescent, adult]. Valid digits = [001, 002, 003, 004, 005, 006, 007, 008, 009, 010].
     * eg. adolescent002 or adult010
-* `alg_name`: Optional argument. Name of the Javascript oref algorithm variant to run instead of the Swift algorithm. Defaults to `"swift"` if no argument given. Possible choices:
-    * `jsbug`: Original Javascript implementation.
+    * Virtual person therapeutic settings in directory [VirtualPatients](../VirtualPatients/).
+* `alg_name`: Optional argument. Name of the JavaScript oref algorithm variant to run instead of the Swift algorithm. Defaults to `"swift"` if no argument given. Possible choices:
+    * `jsbug`: Original JavaScript implementation.
     * `js`: Javascript implementation of bug-free Swift oref algorithm.
     * `swift`: Swift implementation of oref algorithm.
 * `days`: Number of days simulation runs (must be whole number)
 * `meal_scenario_path`: Optional argument. Filepath to precomputed .npy file containing meal scenario.
 * `results_file`: Filepath to .csv file where outputs will be written to.
 
+
 ## Trio Oref Algorithm Integration in simglucose
-A [controller](../simglucose/simglucose/controller/trio_ctrller.py) initialzes a simulation state for the oref algorithm. The oref algorithm uses this simulation state to track the last 24 hours of self-managed time-series data to decide the amount of insulin to deliver at the current timestep.
+A [controller](../simglucose/simglucose/controller/trio_ctrller.py) initializes a simulation state for the Trio oref algorithm. The oref algorithm uses this simulation state to track the last 24 hours of self-managed time-series data to decide the amount of insulin to deliver at the current timestep.
 
-The oref algorithm uses unique physiological parameters for each virtual patient translated from patient's settings in [../simglucose/simglucose/params/](../simglucose/simglucose/params/). For some virtual patients, their insulin sensitivity (correction factor) was tuned against random scenario runs of the simulator, because simulated glucose outputs spent significant amount of time in hypoglycemia. In these scenarios, we increased the insulin sensitivity. Virtual patient data is located in [../VirtualPatients/](../VirtualPatients/).
+The oref algorithm uses unique physiological parameters for each virtual person translated from the their settings in [../simglucose/simglucose/params/](../simglucose/simglucose/params/). For some virtual persons, their insulin sensitivity (correction factor) was tuned against random scenario runs of the simulator, because simulated glucose outputs spent significant amount of time in hypoglycemia. In these scenarios, we increased the insulin sensitivity. Virtual patient data is located in [../VirtualPatients/](../VirtualPatients/).
 
-We simulate the Trio oref algorithm by inserting oref's insulin delivery calculation command into the controller's policy. The controller translates oref's basal and bolus commands into rates in terms of U/min. These rates are then wired into `simglucose` which uses these rates to predict future glucose values.
+We simulate the Trio oref algorithm by wiring oref's insulin delivery outputs into the controller's policy. The controller translates oref's basal and bolus commands into rates in terms of U/min. These rates are then inputted into `simglucose` which uses these rates to calculate future glucose values.
 
-The `simglucose` simulator executing oref algorithm is ran through `run_sim.py`. The `simglucose` simulator runs a custom meal scenario. This meal scenario can be pre-generated (either manually or through using `gen_meal_scenario.py`), or randoomly generated in `run_sim.py`. Meal scenarios used in experiments for paper in `../MealScenarios/`.
+The `simglucose` simulator executing oref algorithm is ran through [run_sim.py](../simglucose/run_sim.py). The `simglucose` simulator runs a custom meal scenario. This meal scenario can be pre-generated (either manually or through [gen_meal_scenario.py](../simglucose/gen_meal_scenario.py)), or randomly generated in `run_sim.py`. 
+
+Meal scenarios used for mechanistic in silico experiments in paper written to directory [MealScenarios](../MealScenarios/).

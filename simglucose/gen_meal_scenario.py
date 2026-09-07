@@ -9,7 +9,7 @@ import re
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate meal scenario")
     parser.add_argument("-d", required=True, type=int, help="Number of days to simulate a meal scenario.")
-    parser.add_argument("-ps", type=float, default=0.5, help="Probability of a snack occuring.")
+    parser.add_argument("-ps", type=float, default=0.5, help="Probability of a snack occurring.")
 
     parser.add_argument("-bk", type=int, default=30, help="Median breakfast carbohydrate amount.")
     parser.add_argument("-ln", type=int, default=60, help="Median lunch carbohydrate amount.")
@@ -22,7 +22,7 @@ def parse_args():
     parser.add_argument("-dnTime", default='19:00', help="Median dinner time. 24 hour clock [h]:[m].")
     parser.add_argument("-tr", type=int, default=30, help="+/- allowable time deviation from median meal time in minutes.")
 
-    parser.add_argument("-fp", required=True, help="Filepath of file to write results to.")
+    parser.add_argument("-fp", default="scen.npy", help="Filepath of file to write results to.")
     args = parser.parse_args()
 
     if args.ps < 0 or args.ps > 1:
@@ -31,7 +31,7 @@ def parse_args():
         if v < 0:
             raise Exception(f"Number of carbohydrates in a meal must be at least 0. {m_str}'s inputted mean carb input = {v}.")
     if args.mr < 0:
-        raise Exception(f"Allowable deviation from mean meal carb abount must be >= 0. Inputted deviation = {args.mr}.")
+        raise Exception(f"Allowable deviation from mean meal carb amount must be >= 0. Inputted deviation = {args.mr}.")
     
     pattern = r"^(?:[01]?\d|2[0-3]):[0-5]\d$"
     for time, m_str in zip([args.bkTime, args.lnTime, args.dnTime], ["breakfast", "lunch", "dinner"]):
