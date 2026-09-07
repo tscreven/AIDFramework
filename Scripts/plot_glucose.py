@@ -19,8 +19,8 @@ def read_csv(path):
             insulin.append(float(row['insulin']))
     return times, glucose, autosens, sens_ratio, insulin
 
-fixed_t, fixed_g, fixed_as, fixed_sr, fixed_ins = read_csv('autosensBugInvoke/simOut_DynamicISF_ON/fixed/14CFC51D-9B72-4B05-93BC-3544FCA8D58B_2025-11-02T10:15:00Z_output.csv')
-buggy_t, buggy_g, buggy_as, buggy_sr, buggy_ins = read_csv('autosensBugInvoke/simOut_DynamicISF_ON/buggy/14CFC51D-9B72-4B05-93BC-3544FCA8D58B_2025-11-02T10:15:00Z_output.csv')
+fixed_t, fixed_g, fixed_as, fixed_sr, fixed_ins = read_csv('fixed_output.csv')
+buggy_t, buggy_g, buggy_as, buggy_sr, buggy_ins = read_csv('buggy_output.csv')
 
 fixed_cum = list(itertools.accumulate(fixed_ins))
 buggy_cum = list(itertools.accumulate(buggy_ins))
