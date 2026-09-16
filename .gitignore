@@ -39,3 +39,12 @@ added_glucose/
 
 # Trio Oref CLI state
 state/
+
+# Single bug invoke run
+buggy_output.csv
+fixed_output.csv
+glucose_plot.png
+temp.txt
+
+# datafiles
+*.txz

@@ -252,3 +252,6 @@ All commands support `-` for STDIN and STDOUT:
 ```bash
 cat input.json | swift run oref-swift iob -i - -o -
 ```
+
+# Data-driven replay simulation & Case studies
+See [this notebook](data-driven_replay_simulation_analysis.ipynb) to reproduce the results

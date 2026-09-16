@@ -4,6 +4,14 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+# Larger fonts for readability
+plt.rcParams.update({
+    'axes.titlesize': 18 - 1,
+    'axes.labelsize': 15 - 1,
+    'xtick.labelsize': 13 - 1,
+    'ytick.labelsize': 13 - 1,
+})
+
 def read_csv(path):
     times, glucose, autosens, sens_ratio, insulin = [], [], [], [], []
     with open(path) as f:
@@ -62,7 +70,7 @@ ax2.plot(buggy_t, buggy_sr, label='Buggy sensitivityRatio', linewidth=1.0, color
 ax2.axhline(1.0, color='gray', linewidth=0.8, linestyle='--', alpha=0.5)
 ax2.set_xlabel('Time')
 ax2.set_ylabel('Autosens Ratio')
-ax2.legend(fontsize=8)
+ax2.legend(fontsize=11)
 ax2.grid(True, alpha=0.3)
 
 ax2.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
