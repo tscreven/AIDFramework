@@ -45,3 +45,6 @@ buggy_output.csv
 fixed_output.csv
 glucose_plot.png
 temp.txt
+
+# datafiles
+*.txz
