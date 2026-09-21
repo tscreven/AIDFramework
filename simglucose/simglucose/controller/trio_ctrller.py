@@ -12,7 +12,7 @@ class TrioOrefController(Controller):
     def __init__(self, virtual_user, js_alg):
         self.js_alg = js_alg
 
-        virtual_users_dir = Path(__file__).resolve().parents[3] / "VirtualPatients"
+        virtual_users_dir = Path(__file__).resolve().parents[3] / "VirtualPersons"
         user_path = virtual_users_dir / virtual_user
 
         # Initialize TrioOref simulation state.

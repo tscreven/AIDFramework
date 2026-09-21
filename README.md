@@ -1,10 +1,73 @@
-# Using the OrefSwiftCLI
+# AID Algorithm Update Framework
 
-This guide walks through how to build and use the OrefSwiftCLI tool,
+Code and analysis associated with *A Principled Framework for Safe Algorithm
+Updates in Automated Insulin Delivery Systems*. The manuscript submission is
+pending review. A preprint version is available on
+[arXiv](https://arxiv.org/abs/2606.13882).
+
+This repository contains the software and analysis used for three components of
+the paper:
+* Mechanistic in silico simulation
+* Shadow execution
+* Data-driven replay and Case studies
+
+It also contains `OrefSwiftCLI`: a command-line interface for executing the
+Swift *oref* implementation evaluated in this study.
+
+> See https://github.com/nightscout/Trio/releases#release-v1.0 for release of
+> Trio's Swift port.
+
+
+## Reproducing Paper Results
+
+Clone the repository and initialize a submodule:
+```bash
+git clone https://github.com/tscreven/AIDFramework
+cd AIDFramework
+git submodule update --init --recursive
+```
+
+Python analyses require Python version 3.12 or later.
+
+| Analysis | Primary entry point | Documentation |
+| --- | --- | --- |
+| Mechanistic in silico simulation | [`in_silico_simulation_analysis.ipynb`](in_silico_simulation_analysis.ipynb) | [`Docs/simglucose.md`](Docs/simglucose.md) |
+| Shadow execution | [`OrefShadowExecutionAnalysis`](OrefShadowExecutionAnalysis) | [Pinned GitHub revision](https://github.com/kingst/OrefShadowExecutionAnalysis/tree/192f9506cadaf27053af58128337bbcada900dc5) |
+| Data-driven replay and case studies | [`data-driven_replay_simulation_analysis.ipynb`](data-driven_replay_simulation_analysis.ipynb) | [`Docs/simplesim.md`](Docs/simplesim.md), [`Docs/create_added_glucose.md`](Docs/create_added_glucose.md) |
+
+
+### Mechanistic in silico simulation
+Run
+[`in_silico_simulation_analysis.ipynb`](in_silico_simulation_analysis.ipynb) to
+reproduce Mechanistic in silico simulation results. Simulator documentation in
+[`Docs/simglucose.md`](Docs/simglucose.md). 
+
+### Shadow execution
+Shadow execution analysis is contained in directory [`OrefShadowExecutionAnalysis`](OrefShadowExecutionAnalysis). 
+
+Corresponding GitHub revision: https://github.com/kingst/OrefShadowExecutionAnalysis/tree/192f9506cadaf27053af58128337bbcada900dc5.
+
+### Data-driven replay simulation & Case studies
+Run [`data-driven_replay_simulation_analysis.ipynb`](data-driven_replay_simulation_analysis.ipynb) to reproduce Data-driven replay simulation and case study results. 
+
+SimpleSim simulator  documentation in [`Docs/simplesim.md`](Docs/simplesim.md).
+Added glucose documentation in
+[`Docs/create_added_glucose.md`](Docs/create_added_glucose.md).
+
+<br>
+
+## Using the OrefSwiftCLI
+
+The rest of this document walks through how to build and use the `OrefSwiftCLI` tool,
 both for running individual algorithm functions and for running
 simulations.
 
-## Building
+Additional documentation:
+* [`Docs/OrefSwiftCLI.md`](Docs/OrefSwiftCLI.md)
+* [`Docs/oref-cli-server.md`](Docs/oref-cli-server.md)
+* [`Docs/simulation.md`](Docs/simulation.md)
+
+### Building
 
 From the `OrefSwiftCLI/` directory:
 
@@ -19,7 +82,7 @@ For a release build:
 swift build -c release
 ```
 
-## Running
+### Running
 
 You can run the tool with `swift run` or directly via the built binary:
 
@@ -35,13 +98,13 @@ Use `--help` to see available subcommands:
 swift run oref-swift --help
 ```
 
-## Simulation commands
+### Simulation commands
 
 The simulation commands let you run the algorithm over a series of
 glucose readings, maintaining state between calls. This is useful for
 testing how the algorithm behaves over time.
 
-### Workflow overview
+## Workflow overview
 
 A simulation session follows three steps:
 
@@ -252,6 +315,3 @@ All commands support `-` for STDIN and STDOUT:
 ```bash
 cat input.json | swift run oref-swift iob -i - -o -
 ```
-
-# Data-driven replay simulation & Case studies
-See [this notebook](data-driven_replay_simulation_analysis.ipynb) to reproduce the results
