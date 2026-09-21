@@ -2,6 +2,8 @@
 
 This document provides instructions for simulating the Trio oref algorithm in `simglucose` on pre-loaded virtual persons and explains how Trio's oref algorithm is looped into the simulator's controller policy.
 
+The `simglucose` implementation included in this repository is adapted from the original implementation by Jianxiong Xie and contributors. Modifications were made to support the evaluation environment used in this study.
+
 ## Outline
 1. Simulation Instructions and Commands
     * [Create meal scenario](#create-meal-scenario)
@@ -60,7 +62,7 @@ python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen
 
 * `virtual_patient`: Name of virtual person. Valid names are age group followed by three digits. Age groups = [child, adolescent, adult]. Valid digits = [001, 002, 003, 004, 005, 006, 007, 008, 009, 010].
     * eg. adolescent002 or adult010
-    * Virtual person therapeutic settings in directory [VirtualPatients](../VirtualPatients/).
+    * Virtual person therapeutic settings in directory [VirtualPersons](../VirtualPersons/).
 * `alg_name`: Optional argument. Name of the JavaScript oref algorithm variant to run instead of the Swift algorithm. Defaults to `"swift"` if no argument given. Possible choices:
     * `jsbug`: Original JavaScript implementation.
     * `js`: Javascript implementation of bug-free Swift oref algorithm.
@@ -73,7 +75,7 @@ python3 simglucose/run_sim.py -u <virtual_patient> -a <alg_name> -d <days> -scen
 ## Trio Oref Algorithm Integration in simglucose
 A [controller](../simglucose/simglucose/controller/trio_ctrller.py) initializes a simulation state for the Trio oref algorithm. The oref algorithm uses this simulation state to track the last 24 hours of self-managed time-series data to decide the amount of insulin to deliver at the current timestep.
 
-The oref algorithm uses unique physiological parameters for each virtual person translated from the their settings in [../simglucose/simglucose/params/](../simglucose/simglucose/params/). For some virtual persons, their insulin sensitivity (correction factor) was tuned against random scenario runs of the simulator, because simulated glucose outputs spent significant amount of time in hypoglycemia. In these scenarios, we increased the insulin sensitivity. Virtual patient data is located in [../VirtualPatients/](../VirtualPatients/).
+The oref algorithm uses unique physiological parameters for each virtual person translated from the their settings in [../simglucose/simglucose/params/](../simglucose/simglucose/params/). For some virtual persons, their insulin sensitivity (correction factor) was tuned against random scenario runs of the simulator, because simulated glucose outputs spent significant amount of time in hypoglycemia. In these scenarios, we increased the insulin sensitivity. Virtual patient data is located in [../VirtualPersons/](../VirtualPersons/).
 
 We simulate the Trio oref algorithm by wiring oref's insulin delivery outputs into the controller's policy. The controller translates oref's basal and bolus commands into rates in terms of U/min. These rates are then inputted into `simglucose` which uses these rates to calculate future glucose values.
 
