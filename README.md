@@ -2,7 +2,7 @@
 
 Code and analysis associated with *A Principled Framework for Safe Algorithm
 Updates in Automated Insulin Delivery Systems*. The manuscript submission is
-pending review. A preprint version is available on
+pending review. An older preprint version is available on
 [arXiv](https://arxiv.org/abs/2606.13882).
 
 This repository contains the software and analysis used for three components of
