@@ -67,6 +67,7 @@ def report_insulin_delivery_differences(root_dir, window_hours=6):
         ("Max diff", fmt(max_24h[0]), fmt(max_win[1])),
         ("Median diff", fmt(statistics.median(diffs_24h)), fmt(statistics.median(diffs_win))),
         ("Mean diff", fmt(statistics.mean(diffs_24h)), fmt(statistics.mean(diffs_win))),
+        ("Std diff", fmt(statistics.pstdev(diffs_24h)), fmt(statistics.pstdev(diffs_win))),
     ]
     headers = ("", "24 h total", f"{window_hours} h window")
     widths = [max(len(str(r[i])) for r in rows + [headers]) for i in range(3)]
