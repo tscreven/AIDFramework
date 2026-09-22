@@ -104,7 +104,7 @@ The simulation commands let you run the algorithm over a series of
 glucose readings, maintaining state between calls. This is useful for
 testing how the algorithm behaves over time.
 
-## Workflow overview
+#### Workflow overview
 
 A simulation session follows three steps:
 
@@ -112,7 +112,7 @@ A simulation session follows three steps:
 2. **Calculate** insulin dosing for each new glucose reading (repeated)
 3. Optionally call **stepUpdate** between calculations
 
-### Step 1: Initialize a session
+#### Step 1: Initialize a session
 
 The `initialize` command creates a new simulation session from a
 virtual user directory. The virtual user directory must contain therapy
@@ -135,7 +135,7 @@ returns its path in the output:
 
 Save this path -- you'll pass it to all subsequent commands.
 
-### Step 2: Calculate insulin dosing
+#### Step 2: Calculate insulin dosing
 
 The `calculate` command takes a new glucose reading and timestamp,
 runs the full algorithm pipeline (makeProfile, iob, meal, autosens,
@@ -186,7 +186,7 @@ Each call to `calculate` updates the state directory with:
   once enough data is available)
 - Regenerated `profile.json`
 
-### Running multiple cycles
+#### Running multiple cycles
 
 To simulate a series of glucose readings, call `calculate` repeatedly
 with incrementing timestamps (typically 5 minutes apart):
@@ -205,7 +205,7 @@ echo '{"timestamp": 1707801000, "glucose": 130}' | \
   swift run oref-swift calculate -s state/sam_20260213_100000 -i - -o -
 ```
 
-### Step 3: stepUpdate (optional)
+#### Step 3: stepUpdate (optional)
 
 The `stepUpdate` command is a placeholder for future use by the
 broader simulation framework. It is currently a no-op.
@@ -214,7 +214,7 @@ broader simulation framework. It is currently a no-op.
 swift run oref-swift stepUpdate -i step_input.json -o -
 ```
 
-## Inspecting simulation state
+### Inspecting simulation state
 
 Because all state files are persisted as JSON in the state directory,
 you can inspect them at any point during a simulation:
@@ -236,7 +236,7 @@ cat state/sam_20260213_100000/autosens.json | python3 -m json.tool
 cat state/sam_20260213_100000/tdd.json | python3 -m json.tool
 ```
 
-## Virtual users
+### Virtual users
 
 Virtual user directories live in `OrefSwiftCLI/VirtualUsers/`. Each
 subdirectory represents a user with their own therapy settings. For
@@ -258,13 +258,13 @@ settings via the local file system on a device. To create a new
 virtual user, create a new directory under `VirtualUsers/` with the
 required JSON files.
 
-## Basic algorithm commands
+### Basic algorithm commands
 
 These commands run individual algorithm functions. Each takes a JSON
 input file (`-i`) and writes the result to an output file (`-o`). Use
 `-` for STDIN or STDOUT.
 
-### makeProfile
+#### makeProfile
 
 Generates an OpenAPS profile from therapy settings.
 
@@ -276,7 +276,7 @@ The input JSON must contain: `preferences`, `pumpSettings`, `bgTargets`,
 `basalProfile`, `isf`, `carbRatios`, `tempTargets`, `model`,
 `trioSettings`, and `clock`.
 
-### iob
+#### iob
 
 Calculates insulin on board from pump history.
 
@@ -284,7 +284,7 @@ Calculates insulin on board from pump history.
 swift run oref-swift iob -i iob_input.json -o iob_output.json
 ```
 
-### meal
+#### meal
 
 Calculates meal data including carbs on board (COB).
 
@@ -292,7 +292,7 @@ Calculates meal data including carbs on board (COB).
 swift run oref-swift meal -i meal_input.json -o meal_output.json
 ```
 
-### autosens
+#### autosens
 
 Calculates the autosensitivity ratio.
 
@@ -300,7 +300,7 @@ Calculates the autosensitivity ratio.
 swift run oref-swift autosens -i autosens_input.json -o autosens_output.json
 ```
 
-### determineBasal
+#### determineBasal
 
 Determines basal rate adjustments based on current state.
 
@@ -308,7 +308,7 @@ Determines basal rate adjustments based on current state.
 swift run oref-swift determineBasal -i determine_basal_input.json -o -
 ```
 
-### Piping with STDIN/STDOUT
+#### Piping with STDIN/STDOUT
 
 All commands support `-` for STDIN and STDOUT:
 
