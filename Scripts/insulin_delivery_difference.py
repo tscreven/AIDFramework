@@ -4,6 +4,7 @@ import pandas as pd
 from pathlib import Path
 
 ROWS_PER_HOUR = 12  # each CSV row is 5 minutes apart
+PERCENTILES = (5, 25, 50, 75, 90, 95, 99)
 
 
 def insulin_delivery_difference(buggy_csv, fixed_csv, window_hours=None):
@@ -62,10 +63,18 @@ def report_insulin_delivery_differences(root_dir, window_hours=6):
     def fmt(x):
         return f"{x:.3f} %"
 
+    def percentile(diffs, p):
+        return pd.Series(diffs).quantile(p / 100)
+
     rows = [
         ("Pairs compared", f"{len(results)}", ""),
+        ("Min diff", fmt(min(diffs_24h)), fmt(min(diffs_win))),
+    ]
+    for p in PERCENTILES:
+        label = "Median diff" if p == 50 else f"{p}th pct diff"
+        rows.append((label, fmt(percentile(diffs_24h, p)), fmt(percentile(diffs_win, p))))
+    rows += [
         ("Max diff", fmt(max_24h[0]), fmt(max_win[1])),
-        ("Median diff", fmt(statistics.median(diffs_24h)), fmt(statistics.median(diffs_win))),
         ("Mean diff", fmt(statistics.mean(diffs_24h)), fmt(statistics.mean(diffs_win))),
         ("Std diff", fmt(statistics.pstdev(diffs_24h)), fmt(statistics.pstdev(diffs_win))),
     ]
