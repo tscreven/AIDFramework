@@ -11,9 +11,13 @@ GLUCOSE_PATH = 'autosensBugInvoke/state_autosens_error/glucose.json'
 TDD_PATH = 'autosensBugInvoke/state_autosens_error/tdd.json'
 SETTINGS_PATH = 'autosensBugInvoke/state_autosens_error/settings.json'
 
-def create_state(snapshot_path: str):
+def create_state(snapshot_path: str, long_name: bool = False):
     snapshot_file = Path(snapshot_path)
-    snapshot_id = snapshot_file.name.rsplit('.', 2)[0].split('-')[0]
+    if long_name:
+        # Full "<uuid>.<N>" name, so several snapshots from one user don't collide
+        snapshot_id = snapshot_file.name.replace('.json', '')
+    else:
+        snapshot_id = snapshot_file.name.rsplit('.', 2)[0].split('-')[0]
     destination_dir = snapshot_file.parent / f'state_{snapshot_id}'
 
     with open(snapshot_path, 'r') as f:
@@ -82,9 +86,12 @@ def create_state(snapshot_path: str):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print(f'Usage: {sys.argv[0]} <snapshot.json> [...]')
+    args = sys.argv[1:]
+    long_name = '--long-name' in args
+    paths = [a for a in args if a != '--long-name']
+    if not paths:
+        print(f'Usage: {sys.argv[0]} [--long-name] <snapshot.json> [...]')
         sys.exit(1)
 
-    for path in sys.argv[1:]:
-        create_state(path)
+    for path in paths:
+        create_state(path, long_name)

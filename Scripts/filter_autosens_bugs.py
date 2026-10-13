@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 json_path = 'autosens-comparison-threshold.json'
@@ -19,6 +20,8 @@ for i, file in enumerate(files):
     basename = Path(filePath).name
     uuid = basename.split('.')[0]
     if uuid in seen_names:
+        # Short-name state dirs would collide; create these with --long-name instead
+        print(f"skipped (duplicate user): {basename}", file=sys.stderr)
         continue
     seen_names.add(uuid)
     print(basename)
