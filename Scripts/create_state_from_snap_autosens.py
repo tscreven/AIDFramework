@@ -80,7 +80,7 @@ def create_state(snapshot_path: str, long_name: bool = False):
     shutil.copy(SETTINGS_PATH, destination_dir / 'settings.json')
     shutil.copy(TDD_PATH, destination_dir / 'tdd.json')
     with open(destination_dir / 'temptargets.json', 'w') as f:
-        json.dump([], f, indent=4)
+        json.dump(snapshot['autosensInput']['tempTargets'], f, indent=4)
 
     print(f'Created {destination_dir}')
 

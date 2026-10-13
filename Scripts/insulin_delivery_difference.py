@@ -5,6 +5,10 @@ from pathlib import Path
 
 ROWS_PER_HOUR = 12  # each CSV row is 5 minutes apart
 PERCENTILES = (5, 25, 50, 75, 90, 95, 99)
+# Output of the IOB template state (state_2b7574f4) that create_state_from_snap_iob.py
+# copies settings from; it has a resumeTimestamp.txt so run_all_states_all_csvs.sh runs it,
+# but it is not a bug snapshot
+SKIP_SIMOUT = Path('iobBugInvoke/simOut_2b7574f4')
 
 
 def insulin_delivery_difference(buggy_csv, fixed_csv, window_hours=None):
@@ -41,6 +45,8 @@ def report_insulin_delivery_differences(root_dir, window_hours=6):
     results = []  # (diff_24h, diff_window, buggy_csv, fixed_csv)
 
     for simout in simOut_dirs:
+        if simout == SKIP_SIMOUT:
+            continue
         for buggy_csv in sorted((simout / "buggy").glob("*.csv")):
             fixed_csv = simout / "fixed" / buggy_csv.name
             if not fixed_csv.exists():
