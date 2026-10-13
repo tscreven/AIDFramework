@@ -4,6 +4,11 @@ import pandas as pd
 from pathlib import Path
 
 ROWS_PER_HOUR = 12  # each CSV row is 5 minutes apart
+PERCENTILES = (5, 25, 50, 75, 90, 95, 99)
+# Output of the IOB template state (state_2b7574f4) that create_state_from_snap_iob.py
+# copies settings from; it has a resumeTimestamp.txt so run_all_states_all_csvs.sh runs it,
+# but it is not a bug snapshot
+SKIP_SIMOUT = Path('iobBugInvoke/simOut_2b7574f4')
 
 
 def insulin_delivery_difference(buggy_csv, fixed_csv, window_hours=None):
@@ -40,6 +45,8 @@ def report_insulin_delivery_differences(root_dir, window_hours=6):
     results = []  # (diff_24h, diff_window, buggy_csv, fixed_csv)
 
     for simout in simOut_dirs:
+        if simout == SKIP_SIMOUT:
+            continue
         for buggy_csv in sorted((simout / "buggy").glob("*.csv")):
             fixed_csv = simout / "fixed" / buggy_csv.name
             if not fixed_csv.exists():
@@ -62,10 +69,18 @@ def report_insulin_delivery_differences(root_dir, window_hours=6):
     def fmt(x):
         return f"{x:.3f} %"
 
+    def percentile(diffs, p):
+        return pd.Series(diffs).quantile(p / 100)
+
     rows = [
         ("Pairs compared", f"{len(results)}", ""),
+        ("Min diff", fmt(min(diffs_24h)), fmt(min(diffs_win))),
+    ]
+    for p in PERCENTILES:
+        label = "Median diff" if p == 50 else f"{p}th pct diff"
+        rows.append((label, fmt(percentile(diffs_24h, p)), fmt(percentile(diffs_win, p))))
+    rows += [
         ("Max diff", fmt(max_24h[0]), fmt(max_win[1])),
-        ("Median diff", fmt(statistics.median(diffs_24h)), fmt(statistics.median(diffs_win))),
         ("Mean diff", fmt(statistics.mean(diffs_24h)), fmt(statistics.mean(diffs_win))),
         ("Std diff", fmt(statistics.pstdev(diffs_24h)), fmt(statistics.pstdev(diffs_win))),
     ]

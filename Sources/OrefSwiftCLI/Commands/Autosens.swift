@@ -6,7 +6,7 @@ import JavaScriptCore
 
 // MARK: - Input struct for direct JSON decoding
 
-struct AutosensInputs: Decodable {
+struct AutosensInputs: Codable {
     let glucose: [BloodGlucose]
     let history: [PumpHistoryEvent]
     let basalProfile: [BasalProfileEntry]
@@ -86,12 +86,15 @@ struct AutosensCommand: ParsableCommand {
         }
 
         if js || jsbug {
-            guard let inputJSONString = String(data: inputData, encoding: .utf8) else {
-                throw JSErrors.invalidUTF8Input
-            }
+            // Decode and re-encode so JS gets ISO8601 dates, as Calculate (and Trio) do.
+            // Logged inputs store dates as epoch seconds, which JS `new Date()` reads as ms.
+            let decodedInput = try JSONCoding.decoder.decode(AutosensInputs.self, from: inputData)
+            let inputJSONString = String(decoding: try JSONCoding.encoder.encode(decodedInput), as: UTF8.self)
 
             let source: String = try loadSourceAlgorithm(js, jsbug)
-            let jsResultJSONString = try JavaScriptCommandRunner(lib: source).runAutosens(inputJSON: inputJSONString)
+            // jsbug: let JS find_insulin run natively so the IOB bugs show, as Calculate does
+            let jsResultJSONString = try JavaScriptCommandRunner(lib: source)
+                .runAutosens(inputJSON: inputJSONString, injectSwiftIOB: !jsbug)
             let jsData = Data(jsResultJSONString.utf8)
 
             let outputData: Data
