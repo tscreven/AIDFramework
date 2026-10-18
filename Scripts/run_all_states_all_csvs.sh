@@ -2,10 +2,9 @@
 set -e
 
 TRACE_DIR="iobBugInvoke/sample_added_glucose_trace"
-MAX_PARALLEL=4
+MAX_PARALLEL=12
 LOG="temp.txt"
-# BUGTYPE="autosensBugInvoke"
-BUGTYPE="iobBugInvoke"
+BUGTYPES=("iobBugInvoke" "autosensBugInvoke")
 
 run_state() {
     local STATE_SNAPSHOT="$1"
@@ -56,15 +55,18 @@ run_state() {
     rm -rf "$STATE_DIR"
 }
 
-jobs=0
-for STATE_SNAPSHOT in $BUGTYPE/state_*/; do
-    run_state "${STATE_SNAPSHOT%/}" &
-    (( jobs++ ))
-    if (( jobs >= MAX_PARALLEL )); then
-        wait
-        jobs=0
-    fi
+for BUGTYPE in "${BUGTYPES[@]}"; do
+    echo "##### Running $BUGTYPE #####"
+    jobs=0
+    for STATE_SNAPSHOT in $BUGTYPE/state_*/; do
+        run_state "${STATE_SNAPSHOT%/}" &
+        (( jobs++ ))
+        if (( jobs >= MAX_PARALLEL )); then
+            wait
+            jobs=0
+        fi
+    done
+    wait
 done
-wait
 
 echo "Done."
