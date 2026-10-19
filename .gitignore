@@ -48,3 +48,7 @@ temp.txt
 
 # datafiles
 *.txz
+
+VirtualUsers/
+downloaded_files/
+traces/
