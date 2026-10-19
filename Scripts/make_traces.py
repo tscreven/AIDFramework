@@ -1,6 +1,5 @@
 """
 Generate glucose/insulin traces and virtual user profiles from shadow execution data.
-Script version of added_glucose.ipynb, run for every user instead of editing LAST_FOLDER.
 
 For each user it writes:
 - traces/<user_id>/t1d_data_<start>_<end>.json: paired glucose and insulin chunks (from meal logs)
