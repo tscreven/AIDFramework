@@ -79,7 +79,7 @@ class ParkesError():
         return {'A': count[0], 'B': count[3]+count[4], 'C': count[2]+count[5], 
                 'D': count[1]+count[6], 'E': count[7]}
     
-    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=None, ax=None):
+    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=None, ax=None, disable_legend_size=False):
 
         if ax is None:
             plt.figure(dpi=600)
@@ -131,7 +131,10 @@ class ParkesError():
             ax.scatter(x_trace[mask], y_trace[mask], label=zone_label,
                        marker='o', color=colors[zone_name], s=size)
 
-        ax.legend(loc="upper left", fontsize=9, markerscale=2)
+        if disable_legend_size:
+            ax.legend(loc="upper left", markerscale=2)
+        else:
+            ax.legend(loc="upper left", fontsize=9, markerscale=2)
 
         if save_fig_path:
             fig = ax.get_figure(root=True)

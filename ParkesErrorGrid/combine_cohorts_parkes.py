@@ -23,29 +23,38 @@ for user in users:
         adult_traces_f += pd.read_csv(f"simglucoseResults/{user}/swift.csv")["CGM"].to_list()
         adult_traces_b += pd.read_csv(f"simglucoseResults/{user}/jsbug.csv")["CGM"].to_list()
 
+individual_plot_style = {
+    "figure.figsize": (4.8, 3.6),
+    "figure.constrained_layout.use": True,
+    "legend.fontsize": 7.5,
+}
 
-pe_c = ParkesError(child_traces_f, child_traces_b)
-pe_c.plot(f"simglucose Children Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/ChildrenParkeError.png")
+with plt.rc_context(individual_plot_style):
+    pe_c = ParkesError(child_traces_f, child_traces_b)
+    pe_c.plot(f"simglucose Children Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/ChildrenParkeError.png", disable_legend_size=True)
 
-pe_ado = ParkesError(adolescent_traces_f, adolescent_traces_b)
-pe_ado.plot(f"simglucose Adolescent Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdolescentParkeError.png")
+    pe_ado = ParkesError(adolescent_traces_f, adolescent_traces_b)
+    pe_ado.plot(f"simglucose Adolescent Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdolescentParkeError.png", disable_legend_size=True)
 
-pe_adu = ParkesError(adult_traces_f, adult_traces_b)
-pe_adu.plot(f"simglucose Adult Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdultParkeError.png")
+    pe_adu = ParkesError(adult_traces_f, adult_traces_b)
+    pe_adu.plot(f"simglucose Adult Virtual Patients", f"Swift Algorithm Glucose", f"Original Javascript Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdultParkeError.png", disable_legend_size=True)
 
-pe_c_2 = ParkesError(child_traces_b, child_traces_f)
-pe_c_2.plot(f"simglucose Children Virtual Patients", f"Original Javascript Algorithm Glucose",f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/ChildrenParkeError_flipped.png")
+    pe_c_2 = ParkesError(child_traces_b, child_traces_f)
+    pe_c_2.plot(f"simglucose Children Virtual Patients", f"Original Javascript Algorithm Glucose",f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/ChildrenParkeError_flipped.png", disable_legend_size=True)
 
-pe_ado_2 = ParkesError(adolescent_traces_b, adolescent_traces_f)
-pe_ado_2.plot(f"simglucose Adolescent Virtual Patients", f"Original Javascript Algorithm Glucose", f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdolescentParkeError_flipped.png")
+    pe_ado_2 = ParkesError(adolescent_traces_b, adolescent_traces_f)
+    pe_ado_2.plot(f"simglucose Adolescent Virtual Patients", f"Original Javascript Algorithm Glucose", f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdolescentParkeError_flipped.png", disable_legend_size=True)
 
-pe_adu_2 = ParkesError(adult_traces_b, adult_traces_f)
-pe_adu_2.plot(f"simglucose Adult Virtual Patients", f"Original Javascript Algorithm Glucose", f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdultParkeError_flipped.png")
+    pe_adu_2 = ParkesError(adult_traces_b, adult_traces_f)
+    pe_adu_2.plot(f"simglucose Adult Virtual Patients", f"Original Javascript Algorithm Glucose", f"Swift Algorithm Glucose", size=1, save_fig_path="simglucoseResults/AdultParkeError_flipped.png", disable_legend_size=True)
 
 files = [
-    "simglucoseResults/AdultParkeError.png", "simglucoseResults/AdultParkeError_flipped.png",
-    "simglucoseResults/AdolescentParkeError.png", "simglucoseResults/AdolescentParkeError_flipped.png",
-    "simglucoseResults/ChildrenParkeError.png", "simglucoseResults/ChildrenParkeError_flipped.png",
+    "simglucoseResults/AdultParkeError.png", 
+    "simglucoseResults/AdultParkeError_flipped.png",
+    "simglucoseResults/AdolescentParkeError.png", 
+    "simglucoseResults/AdolescentParkeError_flipped.png",
+    "simglucoseResults/ChildrenParkeError.png", 
+    "simglucoseResults/ChildrenParkeError_flipped.png",
 ]
 
 fig, axes = plt.subplots(3, 2, figsize=(10, 12))
@@ -57,4 +66,5 @@ for ax, file in zip(axes.flat, files):
     ax.set_position([0, 0, 1, 1])
 
 plt.subplots_adjust(wspace=0, hspace=0)
-plt.savefig("simglucoseResults/combined_parkes.png", dpi=300, bbox_inches="tight", pad_inches=0)
+combined_plot = "simglucoseResults/combined_parkes.png"
+plt.savefig(combined_plot, dpi=600, bbox_inches="tight", pad_inches=0)
