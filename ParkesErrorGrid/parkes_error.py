@@ -79,16 +79,18 @@ class ParkesError():
         return {'A': count[0], 'B': count[3]+count[4], 'C': count[2]+count[5], 
                 'D': count[1]+count[6], 'E': count[7]}
     
-    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=None, ax=None, disable_legend_size=False):
+    def plot(self, title, x_axis, y_axis, size=2, save_fig_path=None, ax=None, disable_legend_size=False, font_size=None):
 
         if ax is None:
             plt.figure(dpi=600)
             plt.clf()
             ax = plt.gca()
 
-        ax.set_title(title)
-        ax.set_xlabel(x_axis)
-        ax.set_ylabel(y_axis)
+        ax.set_title(title, fontsize=None if font_size is None else font_size + 2)
+        ax.set_xlabel(x_axis, fontsize=font_size)
+        ax.set_ylabel(y_axis, fontsize=font_size)
+        if font_size is not None:
+            ax.tick_params(labelsize=font_size)
         ax.set_xlim((0, 400))
         ax.set_ylim((0, 400))
 
@@ -131,7 +133,9 @@ class ParkesError():
             ax.scatter(x_trace[mask], y_trace[mask], label=zone_label,
                        marker='o', color=colors[zone_name], s=size)
 
-        if disable_legend_size:
+        if font_size is not None:
+            ax.legend(loc="upper left", fontsize=font_size, markerscale=2)
+        elif disable_legend_size:
             ax.legend(loc="upper left", markerscale=2)
         else:
             ax.legend(loc="upper left", fontsize=9, markerscale=2)
@@ -140,6 +144,6 @@ class ParkesError():
             fig = ax.get_figure(root=True)
             if fig is None:
                 raise RuntimeError("Cannot save Parkes error plot without a Matplotlib figure.")
-            fig.savefig(save_fig_path)
+            fig.savefig(save_fig_path, dpi=600)
 
         return ax
