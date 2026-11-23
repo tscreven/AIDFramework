@@ -25,6 +25,7 @@ Clone the repository and initialize a submodule:
 git clone https://github.com/tscreven/AIDFramework
 cd AIDFramework
 git submodule update --init --recursive
+pip install -r requirements.txt
 ```
 
 Python analyses require Python version 3.12 or later.

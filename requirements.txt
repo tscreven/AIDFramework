@@ -1,0 +1,12 @@
+# Python 3.12+ (see .python-version)
+
+ipykernel>=7.3.0
+matplotlib==3.10.8
+numpy>=2.4.6
+pandas>=3.0.3
+scipy>=1.11.0
+gym==0.9.4
+gymnasium~=0.29.1
+pathos>=0.3.1
+setuptools<81
+flask>=2.0.0
