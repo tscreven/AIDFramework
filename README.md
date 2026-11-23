@@ -28,9 +28,9 @@ git submodule update --init --recursive
 pip install -r requirements.txt
 ```
 
-Python analyses require Python version 3.12 or later. Algorithm simulation
-requires a computer running macOS 13 or later, Xcode or the Xcode Command Line
-Tools installed, and Swift version of at least 5.9.
+Python analyses require Python version 3.12 or later. Javascript and Swift
+*oref* simulation requires a computer running macOS 13 or later, Xcode or the
+Xcode Command Line Tools, and Swift version 5.9 or later.
 
 | Analysis | Primary entry point | Documentation |
 | --- | --- | --- |
