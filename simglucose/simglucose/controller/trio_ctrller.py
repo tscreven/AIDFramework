@@ -3,9 +3,10 @@ from .base import Action
 import subprocess
 import sys
 import json
+import platform
 from pathlib import Path
 
-OREF_SWIFT_BINARY = ".build/arm64-apple-macosx/release/oref-swift"
+OREF_SWIFT_BINARY = f".build/{platform.machine()}-apple-macosx/release/oref-swift"
 
 class TrioOrefController(Controller):
 

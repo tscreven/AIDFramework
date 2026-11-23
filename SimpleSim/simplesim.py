@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import math
+import platform
 import subprocess
 import sys
 import time
@@ -73,7 +74,7 @@ def load_added_glucose_csv(path):
     return timestamps, initial_glucose, added_glucose_values, glucose_values
 
 
-OREF_SWIFT_BINARY = ".build/arm64-apple-macosx/release/oref-swift"
+OREF_SWIFT_BINARY = f".build/{platform.machine()}-apple-macosx/release/oref-swift"
 
 
 def initialize(virtual_user):
